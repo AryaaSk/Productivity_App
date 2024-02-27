@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { GetState } from './state';
+import { useState } from 'react';
+import { Button } from './input';
 
-function App() {
+//state
+const state = GetState();
+
+
+
+
+
+
+
+
+
+
+
+
+
+const APP = () => {
+  let [count, SetCount] = useState(0);
+  const handler = () => {
+    SetCount(count + 1);
+  }
+
+  const Button2 = <Button count={count} handler={handler} />
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {state.username}
+      <br />
+
+
+      {Button2}
+      {Button2}
+      {Button2}
     </div>
   );
 }
 
-export default App;
+export default APP;
