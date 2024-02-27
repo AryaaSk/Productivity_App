@@ -1,39 +1,25 @@
+import './styles.css'
+
 import { GetState } from './state';
+import { FormatDate } from './extra';
+
 import { useState } from 'react';
-import { Button } from './input';
 
-//state
-const state = GetState();
-
-
-
-
-
-
-
-
-
-
-
+const data = GetState();
 
 
 const APP = () => {
-  let [count, SetCount] = useState(0);
-  const handler = () => {
-    SetCount(count + 1);
-  }
+  const date = new Date()
 
-  const Button2 = <Button count={count} handler={handler} />
+  return (    
+    <div id='container'>
+      <h1>Tasks</h1>
 
-  return (
-    <div className="App">
-      {state.username}
-      <br />
+      <h3>{FormatDate(date)}</h3>
 
-
-      {Button2}
-      {Button2}
-      {Button2}
+      <div className="task">
+        bruh
+      </div>
     </div>
   );
 }
