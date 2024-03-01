@@ -1,13 +1,14 @@
-const STORAGE_KEY = "userData"
+const SETUP_KEY = "setup"
+const USER_DATA_KEY = "userData"
 
-const SaveUserData = (data: UserData) => {
+const SaveData = (data: any, key: string) => {
     const json = JSON.stringify(data);
-    localStorage.setItem(STORAGE_KEY, json);
+    localStorage.setItem(key, json);
 }
 
-const GetUserData = (): UserData => {
-    const defaultUserData = { balance: 0, tasks: [], rewards: [] };
-    const userDataJSON = localStorage.getItem(STORAGE_KEY);
+const GetData = (key: string) => {
+    const defaultData = DEFAULTS[key]
+    const json = localStorage.getItem(key);
 
-    return userDataJSON != null ? JSON.parse(userDataJSON) : defaultUserData
+    return json != null ? JSON.parse(json) : defaultData;
 }
