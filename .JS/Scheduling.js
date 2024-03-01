@@ -36,25 +36,25 @@ const ScheduleTasks = (setup, date) => {
     return todayTasks;
 };
 const UpdateUserData = (userData, setup, date) => {
+    for (const task of userData.tasks) { //increment dayCounter for all tasks in tasks
+        task.daysCounter += 1;
+    }
+    const newTasks = ScheduleTasks(setup, date); //add today's tasks from Scheduler
+    userData.tasks = userData.tasks.concat(newTasks);
+    const rewards = JSON.parse(JSON.stringify(setup.rewards)); //same rewards available everyday
+    userData.rewards = rewards;
+};
+const CatchUpUserData = (userData, setup, date) => {
     const dateString = FormatDate(date);
     //check if given date is behind of lastScheduleUpdate; in which case the loop will run forever
     if (date.getTime() < new Date(userData.lastScheduleUpdate).getTime()) {
         console.log("Date given has already been scheduled");
         return;
     }
-    const Update = (date) => {
-        for (const task of userData.tasks) { //increment dayCounter for all tasks in tasks
-            task.daysCounter += 1;
-        }
-        const newTasks = ScheduleTasks(setup, date); //add today's tasks from Scheduler
-        userData.tasks = userData.tasks.concat(newTasks);
-        const rewards = JSON.parse(JSON.stringify(setup.rewards)); //same rewards available everyday
-        userData.rewards = rewards;
-    };
     //Will only run the update once per day
     while (userData.lastScheduleUpdate != dateString) { //catch up days between last schedule and today
         const currentDate = AddDays(new Date(userData.lastScheduleUpdate), 1); //schedule next day
-        Update(currentDate);
+        UpdateUserData(userData, setup, currentDate);
         userData.lastScheduleUpdate = FormatDate(currentDate);
     }
 };

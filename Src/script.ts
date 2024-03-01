@@ -12,7 +12,7 @@ SETUP.rewards.push({ name: "30 mintues of YouTube", cost: 500 });
 */
 
 const Main = () => {
-    UpdateUserData(USER_DATA, SETUP, new Date('03/10/2024')); //will modify both user data and setup
+    CatchUpUserData(USER_DATA, SETUP, new Date('03/15/2024')); //will modify both user data and setup
     //UpdateUserData(USER_DATA, SETUP, new Date());
     SaveData(SETUP, SETUP_KEY);
     SaveData(USER_DATA, USER_DATA_KEY)
@@ -20,7 +20,7 @@ const Main = () => {
     console.log(SETUP);
     console.log(USER_DATA)
 
-    DisplayTasksPage();
+    DisplaySetupPage()
     AttachTabBarListeners();
 }
 Main();

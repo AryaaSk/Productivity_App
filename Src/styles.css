@@ -45,7 +45,23 @@ body {
     height: 100%;
     width: 100%;
 
+    text-align: center;
+
     background-color: yellow;
+}
+.taskSetup {
+    height: auto;
+    width: 100%;
+
+    margin-bottom: 10px;
+    background-color: rgb(85, 243, 49);
+}
+.rewardSetup {
+    height: auto;
+    width: 100%;
+
+    margin-bottom: 10px;
+    background-color: rgb(209, 134, 255);
 }
 
 #tabBar {

@@ -33,6 +33,25 @@ const DisplaySetupPage = () => {
     HideElement("rewardContainer");
     HideElement("balance");
     ShowElement("setupContainer");
+    PopulateSetupData(SETUP);
+};
+const AttachTabBarListeners = () => {
+    const tasksButton = document.getElementById("tasksPage");
+    tasksButton.onclick = () => {
+        DisplayTasksPage();
+    };
+    const rewardsButton = document.getElementById("rewardsPage");
+    rewardsButton.onclick = () => {
+        DisplayRewardsPage();
+    };
+    const setupButton = document.getElementById("setupPage");
+    setupButton.onclick = () => {
+        DisplaySetupPage();
+    };
+};
+const UpdateBalance = (balance) => {
+    const balanceElement = document.getElementById("balance");
+    balanceElement.innerText = `Current Balance: $${balance}`;
 };
 const LoadTasks = (tasks) => {
     //updates taskContainer element with new tasks
@@ -66,21 +85,26 @@ const LoadRewards = (rewards) => {
         container.append(rewardElement);
     }
 };
-const UpdateBalance = (balance) => {
-    const balanceElement = document.getElementById("balance");
-    balanceElement.innerText = `Current Balance: $${balance}`;
-};
-const AttachTabBarListeners = () => {
-    const tasksButton = document.getElementById("tasksPage");
-    tasksButton.onclick = () => {
-        DisplayTasksPage();
-    };
-    const rewardsButton = document.getElementById("rewardsPage");
-    rewardsButton.onclick = () => {
-        DisplayRewardsPage();
-    };
-    const setupButton = document.getElementById("setupPage");
-    setupButton.onclick = () => {
-        DisplaySetupPage();
-    };
+const PopulateSetupData = (setup) => {
+    const scheduleModeMaps = { "periodic": "Periodic", "specificDays": "Specific Weekdays", "oneTime": "One Time" };
+    const tasksWrapper = document.getElementById("setupTasksWrapper");
+    tasksWrapper.innerHTML = "";
+    for (const { schedule, task } of setup.tasks) {
+        const element = document.createElement("div");
+        element.className = "taskSetup";
+        element.innerHTML = `${task.name}<br>
+        Payout: $${task.payout}<br>
+        Schedule Mode: ${scheduleModeMaps[schedule.mode]}; ${schedule.data} <br>
+        Next Delivery: ${schedule.nextIteration}`;
+        tasksWrapper.append(element);
+    }
+    const rewardsWrapper = document.getElementById("setupRewardsWrapper");
+    rewardsWrapper.innerHTML = "";
+    for (const reward of setup.rewards) {
+        const element = document.createElement("div");
+        element.className = "rewardSetup";
+        element.innerHTML = `${reward.name}<br>
+        Cost: $${reward.cost}<br>`;
+        rewardsWrapper.append(element);
+    }
 };

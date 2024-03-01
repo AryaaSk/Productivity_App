@@ -36,6 +36,29 @@ const DisplaySetupPage = () => {
     HideElement("balance");   
 
     ShowElement("setupContainer");
+    PopulateSetupData(SETUP);
+}
+
+const AttachTabBarListeners = () => {
+    const tasksButton = document.getElementById("tasksPage")!;
+    tasksButton.onclick = () => {
+        DisplayTasksPage();
+    }
+
+    const rewardsButton = document.getElementById("rewardsPage")!;
+    rewardsButton.onclick = () => {
+        DisplayRewardsPage();
+    }
+
+    const setupButton = document.getElementById("setupPage")!;
+    setupButton.onclick = () => {
+        DisplaySetupPage();
+    }
+}
+
+const UpdateBalance = (balance: number) => {
+    const balanceElement = document.getElementById("balance")!;
+    balanceElement.innerText = `Current Balance: $${balance}`;
 }
 
 const LoadTasks = (tasks: Task[]) => {
@@ -80,24 +103,32 @@ const LoadRewards = (rewards: Reward[]) => {
     }
 }
 
-const UpdateBalance = (balance: number) => {
-    const balanceElement = document.getElementById("balance")!;
-    balanceElement.innerText = `Current Balance: $${balance}`;
-}
+const PopulateSetupData = (setup: Setup) => {
+    const scheduleModeMaps = { "periodic": "Periodic", "specificDays": "Specific Weekdays", "oneTime": "One Time" };
 
-const AttachTabBarListeners = () => {
-    const tasksButton = document.getElementById("tasksPage")!;
-    tasksButton.onclick = () => {
-        DisplayTasksPage();
+    const tasksWrapper = document.getElementById("setupTasksWrapper")!;
+    tasksWrapper.innerHTML = "";
+    for (const { schedule, task } of setup.tasks) {
+        const element = document.createElement("div");
+        element.className = "taskSetup";
+
+        element.innerHTML = `${task.name}<br>
+        Payout: $${task.payout}<br>
+        Schedule Mode: ${scheduleModeMaps[schedule.mode]}; ${schedule.data} <br>
+        Next Delivery: ${schedule.nextIteration}`;
+
+        tasksWrapper.append(element);
     }
 
-    const rewardsButton = document.getElementById("rewardsPage")!;
-    rewardsButton.onclick = () => {
-        DisplayRewardsPage();
-    }
+    const rewardsWrapper = document.getElementById("setupRewardsWrapper")!;
+    rewardsWrapper.innerHTML = "";
+    for (const reward of setup.rewards) {
+        const element = document.createElement("div");
+        element.className = "rewardSetup";
 
-    const setupButton = document.getElementById("setupPage")!;
-    setupButton.onclick = () => {
-        DisplaySetupPage();
+        element.innerHTML = `${reward.name}<br>
+        Cost: $${reward.cost}<br>`;
+
+        rewardsWrapper.append(element);
     }
 }
