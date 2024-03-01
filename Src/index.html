@@ -5,29 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index</title>
 
-    <script src="/.JS/dates.js"></script>
+    <script src="/.JS/scheduling.js"></script>
+    <script src="/.JS/parameters.js"></script>
 
-    <script src="/.JS/storage.js"></script>
-    <script src="/.JS/tasks.js"></script>
+    <script src="/.JS/Misc/storage.js"></script>
+    <script src="/.JS/Misc/dates.js"></script>
+    <script src="/.JS/Misc/types.js"></script>
 
-    <script src="/.JS/types.js"></script>
     <script src="/.JS/UI.js"></script>
-
     <script src="/.JS/script.js" defer></script>
-
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div id="container">
-        <div id="header">
+        <div id="balance">
             Current Balance: $0
         </div>
 
-        <div id="taskContainer">
+        <div class="itemContainer" id="taskContainer">
             <div class="task">
                 <div><h3>Task</h3></div>
                 <div><button>$100</button></div>
             </div>
+        </div>
+
+        <div class="itemContainer" id="rewardContainer">
+            <div class="task">
+                <div><h3>Reward</h3></div>
+                <div><button>$500</button></div>
+            </div>
+        </div>
+
+        <div id="setupContainer">
+            This is the setup page
+        </div>
+
+        <div id="tabBar">
+            <div><button id="tasksPage">Tasks</button></div>
+            <div><button id="rewardsPage">Rewards</button></div>
+            <div><button id="setupPage">Setup</button></div>
         </div>
     </div>
 </body>
