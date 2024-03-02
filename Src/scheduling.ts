@@ -88,13 +88,19 @@ const DeleteRewardFromSetup = (index: number) => {
 
 
 const ClaimTask = (index: number) => {
+    //ask for summary (acts as pseudo-verfication and useful for showing progress later on)
+    const summary = prompt("Task Summary");
+    if (summary == undefined || summary.replaceAll(" ", "") == "") return;
+
     //add task's payout to balance and prevent user from being able to claim task again
     const task = USER_DATA.tasks[index];
     const payout = PayoutDamping(task.payout, task.daysCounter);
     USER_DATA.balance += payout;
     
     USER_DATA.tasks.splice(index, 1);
+    HISTORY.push({ taskName: task.name, summary: summary, payout: payout, date: FormatDate(CURRENT_DATE) });
     SaveData(USER_DATA, USER_DATA_KEY);
+    SaveData(HISTORY, HISTORY_KEY);
     PopulateTasks(USER_DATA.tasks);
     UpdateBalance(USER_DATA.balance);
 

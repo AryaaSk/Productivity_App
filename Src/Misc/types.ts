@@ -35,6 +35,9 @@ interface UserData {
     lastScheduleUpdate: string; //mm/dd/yyyy; this prevents user from making changes to setup and seeing them applied on the same day
 }
 
-const DEFAULTS: { [k: string] : any } = {}
-DEFAULTS[SETUP_KEY] = { tasks: [], rewards: [] };
-DEFAULTS[USER_DATA_KEY] = { balance: 0, tasks: [], rewards: [], lastScheduleUpdate: FormatDate(new Date()) };
+interface HistoryLog { //history of task completed, summary and payout
+    taskName: string;
+    summary: string;
+    payout: number
+    date: string; //mm/dd/yyyy
+}
