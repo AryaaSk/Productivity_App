@@ -46,7 +46,7 @@ const GetNextDateOnDay = (currentDate: Date, specificDaysAvailable: number[]) =>
 
     for (const dayIndex of <number[]>specificDaysAvailable) {
         const difference = dayIndex - currentDayIndex;
-        if (difference > 0 && difference < nextClosetDayDifference) {
+        if (difference >= 0 && difference < nextClosetDayDifference) {
             nextClosetDayDifference = difference;
         }
     }

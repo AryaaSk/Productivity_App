@@ -14,7 +14,7 @@ const ScheduleTasks = (setup, date) => {
                 schedule.nextIteration = FormatDate(AddDays(date, schedule.data));
             }
             else if (schedule.mode == "specificDays") {
-                schedule.nextIteration = FormatDate(GetNextDateOnDay(date, schedule.data));
+                schedule.nextIteration = FormatDate(GetNextDateOnDay(AddDays(date, 1), schedule.data)); //find next date from tomorrow (since we don't want to include today)
             }
             else if (schedule.mode == "oneTime") {
                 schedule.nextIteration = "-"; //there is no next iteration for a oneTime event

@@ -9,7 +9,9 @@ const PopulateTasks = (tasks) => {
         const taskElement = document.createElement("div");
         taskElement.className = "task";
         taskElement.innerHTML =
-            `<div><h3>${task.name}</h3></div>`;
+            `<div><h3 style='margin: 0'>${task.name}<br>
+        <h5 style='margin: 0'>${task.daysCounter} day${task.daysCounter != 1 ? 's' : ''} old</h5>
+        </h3></div>`;
         const claimButton = document.createElement("button");
         claimButton.className = "claimTaskButton";
         claimButton.innerText = `$${PayoutDamping(task.payout, task.daysCounter)}`;

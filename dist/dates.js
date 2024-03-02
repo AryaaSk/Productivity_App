@@ -38,7 +38,7 @@ const GetNextDateOnDay = (currentDate, specificDaysAvailable) => {
     let nextClosetDayDifference = Infinity; //default marker
     for (const dayIndex of specificDaysAvailable) {
         const difference = dayIndex - currentDayIndex;
-        if (difference > 0 && difference < nextClosetDayDifference) {
+        if (difference >= 0 && difference < nextClosetDayDifference) {
             nextClosetDayDifference = difference;
         }
     }
