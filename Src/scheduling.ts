@@ -1,7 +1,7 @@
 const ScheduleTasks = (setup: Setup, date: Date) => {
     //looks at setup and returns schedule for the date provided
-    //note that this is not a pure function as it uses stored state
-    //therefore ensure calls are made with an appropriate date parameter
+    //note that once tasks have been returned, their nextIteration attribute is incremented
+    //therefore you can only call this function once to get all results for a particular date
     const dateString = FormatDate(date);
     const todayTasks: Task[] = [];
 
@@ -15,26 +15,11 @@ const ScheduleTasks = (setup: Setup, date: Date) => {
                 schedule.nextIteration = FormatDate(AddDays(date, <number>schedule.data))
             }
             else if (schedule.mode == "specificDays") {
-                //need to find next day in the week
-                const currentDayIndex = date.getDay()
-                let nextClosetDayDifference = Infinity; //default marker
-
-                for (const dayIndex of <number[]>schedule.data) {
-                    const difference = dayIndex - currentDayIndex;
-                    if (difference > 0 && difference < nextClosetDayDifference) {
-                        nextClosetDayDifference = difference;
-                    }
-                }
-
-                if (nextClosetDayDifference == Infinity) {
-                    nextClosetDayDifference = (7 -  currentDayIndex) + (<number[]>schedule.data)[0];
-                }
-
-                schedule.nextIteration = FormatDate(AddDays(date, nextClosetDayDifference))
+                schedule.nextIteration = FormatDate(GetNextDateOnDay(date, <number[]>schedule.data));
             }
-            //for one time we could remove this from the setup, but that may cause complications so we'll just leave it here
-            //can create a clean up function later on which removes oneTime tasks that have already passed
-            else if (schedule.mode == "oneTime") {}
+            else if (schedule.mode == "oneTime") {
+                schedule.nextIteration = "-"; //there is no next iteration for a oneTime event
+            }
         }
     }
 

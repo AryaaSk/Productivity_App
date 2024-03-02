@@ -14,6 +14,10 @@ const AddDays = (date: Date, days: number) => {
 }
 
 function ConvertToFullDate(dateStr: string) {
+    if (dateStr == "-") {
+        return "-"; //nextIteration may be '-' for oneTime events
+    }
+
     try {
         // Parse the string date into a Date object
         var dateParts = dateStr.split('/');
@@ -33,4 +37,23 @@ function ConvertToFullDate(dateStr: string) {
     } catch (error) {
         return "Invalid date format. Please provide the date in the format mm/dd/yyyy.";
     }
+}
+
+const GetNextDateOnDay = (currentDate: Date, specificDaysAvailable: number[]) => {
+    //need to find next day in the week; if specificDaysAvailable = [0, 3] then we are looking for the next Sunday or Wednesday
+    const currentDayIndex = currentDate.getDay()
+    let nextClosetDayDifference = Infinity; //default marker
+
+    for (const dayIndex of <number[]>specificDaysAvailable) {
+        const difference = dayIndex - currentDayIndex;
+        if (difference > 0 && difference < nextClosetDayDifference) {
+            nextClosetDayDifference = difference;
+        }
+    }
+
+    if (nextClosetDayDifference == Infinity) {
+        nextClosetDayDifference = (7 -  currentDayIndex) + (<number[]>specificDaysAvailable)[0];
+    }
+
+    return AddDays(currentDate, nextClosetDayDifference);
 }
