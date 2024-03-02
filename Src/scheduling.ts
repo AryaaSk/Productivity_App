@@ -42,10 +42,6 @@ const ScheduleTasks = (setup: Setup, date: Date) => {
 }
 
 const UpdateUserData = (userData: UserData, setup: Setup, date: Date) => {
-    for (const task of userData.tasks) { //increment dayCounter for all tasks in tasks
-        task.daysCounter += 1;
-    }
-
     const newTasks = ScheduleTasks(setup, date); //add today's tasks from Scheduler
     userData.tasks = userData.tasks.concat(newTasks);
 
@@ -65,10 +61,46 @@ const CatchUpUserData = (userData: UserData, setup: Setup, date: Date) => {
     //Will only run the update once per day
     while (userData.lastScheduleUpdate != dateString) { //catch up days between last schedule and today
         const currentDate = AddDays(new Date(userData.lastScheduleUpdate), 1); //schedule next day
+        for (const task of userData.tasks) { //increment dayCounter for all tasks in tasks
+            task.daysCounter += 1;
+        }
+
         UpdateUserData(userData, setup, currentDate);
         userData.lastScheduleUpdate = FormatDate(currentDate);
     }
 }
+
+
+
+const AddTaskToSetup = (task: Task, schedule: Schedule) => {
+    SETUP.tasks.push({ schedule: schedule, task: task });
+
+    UpdateUserData(USER_DATA, SETUP, new Date(USER_DATA.lastScheduleUpdate)); //update to check for any new tasks added today
+    SaveData(USER_DATA, USER_DATA_KEY);
+    SaveData(SETUP, SETUP_KEY);
+}
+const DeleteTaskFromSetup = (index: number) => {
+    SETUP.tasks.splice(index, 1); //will only affect from next day and onwards; therefore do not need to update user data
+    SaveData(SETUP, SETUP_KEY);
+}
+const AddReward = (reward: Reward) => {
+    SETUP.rewards.push(reward);
+    UpdateUserData(USER_DATA, SETUP, new Date(USER_DATA.lastScheduleUpdate)); //update to check for any new tasks added today
+    SaveData(USER_DATA, USER_DATA_KEY);
+    SaveData(SETUP, SETUP_KEY);
+}
+const DeleteRewardFromSetup = (index: number) => {
+    SETUP.rewards.splice(index, 1);
+
+    //rewards are simply assigned to User Data from setup so it will be updated on the same day
+    UpdateUserData(USER_DATA, SETUP, new Date(USER_DATA.lastScheduleUpdate)); //update to check for any new tasks added today
+    SaveData(USER_DATA, USER_DATA_KEY);
+    SaveData(SETUP, SETUP_KEY);
+}
+
+
+
+
 
 const ClaimTask = (index: number) => {
     //add task's payout to balance and prevent user from being able to claim task again
@@ -78,26 +110,38 @@ const ClaimTask = (index: number) => {
     
     USER_DATA.tasks.splice(index, 1);
     SaveData(USER_DATA, USER_DATA_KEY);
-    LoadTasks(USER_DATA.tasks);
+    PopulateTasks(USER_DATA.tasks);
     UpdateBalance(USER_DATA.balance);
 
-    alert(`Congratulations, you completed a task; $${payout} will be deposited in your account.`);
+    alert(`Congratulations, you completed the task '${task.name}'; $${payout} will be deposited in your account.`);
+}
+const ForfeitTask = (index: number) => {
+    const task = USER_DATA.tasks[index];
+    const payout = PayoutDamping(task.payout, task.daysCounter);
+    const confirm = window.confirm(`Are you sure you want to forfeit $${payout}...`);
+
+    if (confirm == true) {
+        USER_DATA.tasks.splice(index, 1);
+        SaveData(USER_DATA, USER_DATA_KEY);
+        PopulateTasks(USER_DATA.tasks);
+    }
 }
 
 const ClaimReward = (index: number) => {
     //deduct reward's cost from balance (check if balance >= cost first), and possible remove reward
     const reward = USER_DATA.rewards[index];
+    const cost = reward.cost;
     
-    if (USER_DATA.balance < reward.cost) {
-        alert(`You do not have sufficient funds to purchase this reward. Complete a few tasks and earn $${reward.cost - USER_DATA.balance} more...`);
+    if (USER_DATA.balance < cost) {
+        alert(`You do not have sufficient funds to purchase '${reward.name}'. Complete a few tasks and earn $${reward.cost - USER_DATA.balance} more...`);
         return;
     }
 
-    USER_DATA.balance -= reward.cost;
+    USER_DATA.balance -= cost;
 
     SaveData(USER_DATA, USER_DATA_KEY);
-    LoadRewards(USER_DATA.rewards); //for now there shouldn't be any effect, as we aren't currently locking this reward off.
+    PopulateRewards(USER_DATA.rewards); //for now there shouldn't be any effect, as we aren't currently locking this reward off.
     UpdateBalance(USER_DATA.balance);
 
-    alert(`Purchased '${reward.name}'; Enjoy the reward!`);
+    alert(`Purchased '${reward.name}' for $${cost}; Enjoy the reward!`);
 }
