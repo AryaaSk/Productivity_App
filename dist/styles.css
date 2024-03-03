@@ -55,6 +55,14 @@ body {
 
     background-color: red
 }
+.description {
+    width: 100%;
+
+    padding: 10px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
 .claimTaskButton {
     background-color: rgb(0, 226, 0);
 }

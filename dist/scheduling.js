@@ -46,6 +46,25 @@ const CatchUpUserData = (userData, setup, date) => {
         userData.lastScheduleUpdate = FormatDate(currentDate);
     }
 };
+const GetTaskSetupData = () => {
+    const name = prompt("Task Name");
+    const payout = Number(prompt("Payout: $"));
+    const scheduleMode = prompt("Schedule Mode: periodic | specificDays | oneTime");
+    const scheduleData = scheduleMode == "oneTime" ? prompt("Schedule Data: number | number[] | mm/dd/yyyy") : JSON.parse(prompt("Schedule Data: number | number[] | mm/dd/yyyy"));
+    let nextIteration = "";
+    if (scheduleMode == "periodic") {
+        nextIteration = prompt("Next Assignment: mm/dd/yyyy");
+    }
+    else if (scheduleMode == "specificDays") { //next iteration can be calculated if mode is
+        //start from CURRENT_DATE and find next date which is one of the mentioned days
+        //same code from Scheduler (finding next iteration of specific days task)
+        nextIteration = FormatDate(GetNextDateOnDay(CURRENT_DATE, scheduleData));
+    }
+    else if (scheduleMode == "oneTime") {
+        nextIteration = scheduleData; //already given date
+    }
+    return { name, payout, scheduleMode, scheduleData, nextIteration };
+};
 const AddTaskToSetup = (task, schedule) => {
     SETUP.tasks.push({ schedule: schedule, task: task });
     UpdateUserData(USER_DATA, SETUP, new Date(USER_DATA.lastScheduleUpdate)); //update to check for any new tasks added today
@@ -55,6 +74,11 @@ const AddTaskToSetup = (task, schedule) => {
 const DeleteTaskFromSetup = (index) => {
     SETUP.tasks.splice(index, 1); //will only affect from next day and onwards; therefore do not need to update user data
     SaveData(SETUP, SETUP_KEY);
+};
+const GetRewardSetupData = () => {
+    const name = prompt("Reward Name");
+    const cost = Number(prompt("Cost: $"));
+    return { name, cost };
 };
 const AddReward = (reward) => {
     SETUP.rewards.push(reward);

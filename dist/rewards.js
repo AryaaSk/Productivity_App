@@ -7,7 +7,7 @@ const PopulateRewards = (rewards) => {
         const rewardElement = document.createElement("div");
         rewardElement.className = "reward";
         rewardElement.innerHTML =
-            `<div><h3>${reward.name}</h3></div>`;
+            `<div class="description"><h3>${reward.name}</h3></div>`;
         const claimButton = document.createElement("button");
         claimButton.innerText = `$${reward.cost}`;
         claimButton.onclick = () => { ClaimReward(i); };
