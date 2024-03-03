@@ -56,7 +56,7 @@ const AttachSetupListeners = () => {
     };
     const addReward = document.getElementById("addReward");
     addReward.onclick = () => {
-        const name = prompt("Task Name");
+        const name = prompt("Reward Name");
         const cost = Number(prompt("Cost: $"));
         AddReward({ name: name, cost: cost });
         PopulateSetupData(SETUP);
