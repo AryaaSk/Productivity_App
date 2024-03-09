@@ -1,5 +1,5 @@
 body {
-
+    --rowBackgroundColour: var(--systemObjectBackgroundColour)
 }
 
 .main {
@@ -19,4 +19,10 @@ body {
     
     display: grid;
     place-content: center;
+}
+.tableview > .section > .setupItem {
+    background-color: var(--rowBackgroundColour);
+}
+.tableview > .section > .setupItem:active {
+    background-color: var(--rowBackgroundColour);
 }

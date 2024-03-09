@@ -1,0 +1,3 @@
+#title {
+    width: max-content; /* To prevent navigation bar title from overflowing onto multiple lines */
+}
