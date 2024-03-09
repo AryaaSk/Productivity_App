@@ -1,2 +1,0 @@
-LoadDarkMode();
-InitTabBar();
