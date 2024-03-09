@@ -1,0 +1,15 @@
+{
+    "name": "Taskly",
+    "short_name": "Taskly",
+    "description": "An app to gamify completing your daily tasks and habits providing credits, which you can then use to buy rewards and hence improve productivity.",
+    "icons": [
+      {
+        "src": "Assets/Icon.png",
+        "sizes": "1024x1024",
+        "type": "image/png"
+      }
+    ],
+    "start_url": "./",
+    "scope": ".",
+    "display": "fullscreen"
+  }

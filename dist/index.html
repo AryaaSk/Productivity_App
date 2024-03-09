@@ -1,79 +1,34 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Index</title>
+    <title>Taskly</title>
 
-    <script src="scheduling.js"></script>
-    <script src="parameters.js"></script>
-
-    <script src="types.js"></script>
-    <script src="dates.js"></script>
-    <script src="storage.js"></script>
-
-    <script src="routing.js"></script>
-    <script src="tasks.js"></script>
-    <script src="rewards.js"></script>
-    <script src="setup.js"></script>
+    <script src="native.js"></script>
+    <link rel="stylesheet" href="native.css">
+    <link rel="manifest" href="manifest.json">
 
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <div id="container">
-        <div id="balance">
-            Current Balance: $0
-        </div>
-
-        <div class="itemContainer" id="taskContainer">
-            <div class="task">
-                <div class="description">
-                    <h3>Task</h3> <br>
-                    <h6>0 Days Old</h6>
-                </div>
-                <div><button>$100</button></div>
-                <div><button>Forfeit</button></div>
-            </div>
-        </div>
-
-        <div class="itemContainer" id="rewardContainer">
-            <div class="reward">
-                <div class="description"><h3>Reward</h3></div>
-                <div><button>$500</button></div>
-            </div>
-        </div>
-
-        <div class="itemContainer" id="setupContainer">
-            <h1>Tasks</h1>
-            <button id="addTask">Add Task</button> <br> <br>
-
-            <div id="setupTasksWrapper">
-                <div class="taskSetup">
-                    Revise Maths <br>
-                    Payout: $300 <br>
-                    Schedule Mode: Periodic; every 7 days <br>
-                    Next Assignment: Friday 8th March 2024 <br>
-                    <button>Delete</button>
-                </div>
-            </div>
-
-            <h1>Rewards</h1>
-            <button id="addReward">Add Reward</button> <br> <br>
-            <div id="setupRewardsWrapper">
-                <div class="rewardSetup">
-                    30 minutes of Youtube <br>
-                    Cost: $500 <br>
-                    <button>Delete</button>
-                </div>
-            </div>
-        </div>
-
-        <div id="tabBar">
-            <div><button id="tasksPage">Tasks</button></div>
-            <div><button id="rewardsPage">Rewards</button></div>
-            <div><button id="setupPage">Setup</button></div>
-        </div>
+<body ontouchstart>
+    <div class="navigation-bar">
+        <div class="leftButtons"></div>
+        <label>Welcome to Native</label>
+        <div class="rightButtons"></div>
+    </div>
+    
+    <div class="main">
+        <!-- Main content goes here  -->
+    </div>
+    
+    <div class="tab-bar">
+        <!-- Tab bar is initalized with the use of JS (see below) -->
     </div>
 </body>
 </html>
