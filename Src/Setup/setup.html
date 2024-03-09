@@ -16,21 +16,40 @@
 
     <script src="/.JS/Setup/setup.js" defer></script>
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/Src/styles.css">
+    <link rel="stylesheet" href="/Src/Setup/setup.css">
 </head>
 <body ontouchstart>
     <div class="navigation-bar">
         <div class="leftButtons"></div>
-        <label>Welcome to Native</label>
+        <label>Setup</label>
         <div class="rightButtons"></div>
     </div>
     
     <div class="main">
-        <!-- Main content goes here  -->
+        <div class="tableview">
+            <button class="button">Add Task</button>
+            <div class="section">
+                <div class="row">
+                    Revise Maths <br>
+                    Payout: $300 <br>
+                    Schedule Mode: Periodic; every 7 days <br>
+                    Next Assignment: Friday 8th March 2024 <br>
+                    <button class="button">Delete Task</button>
+                </div>
+            </div>
+
+            <button class="button">Add Reward</button>
+            <div class="section">
+                <div class="row">
+                    30 minutes of Youtube <br>
+                    Cost: $500 <br>
+                    <button class="button">Delete Reward</button>
+                </div>
+            </div>
+        </div>
     </div>
     
-    <div class="tab-bar">
-        <!-- Tab bar is initalized with the use of JS (see below) -->
-    </div>
+    <div class="tab-bar"></div>
 </body>
 </html>

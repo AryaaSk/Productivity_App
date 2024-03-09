@@ -1,0 +1,22 @@
+body {
+
+}
+
+.main {
+    background-color: var(--systemGroupedBackgroundColour);
+}
+
+
+.tableview {
+    text-align: center;
+}
+.tableview > button {
+    margin-bottom: 9px;
+    text-align: center;
+}
+.tableview > .section > .row {
+    height: max-content;
+    
+    display: grid;
+    place-content: center;
+}

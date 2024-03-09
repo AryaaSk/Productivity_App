@@ -11,12 +11,13 @@
 
     <script src="native.js"></script>
     <script src="nativeConfig.js" defer></script>
-    <link rel="stylesheet" href="native.css">
+    <link rel="old stylesheet" href="native.css">
     <link rel="manifest" href="manifest.json">
 
     <script src="tasks.js" defer></script>
 
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="tasks.css">
 </head>
 <body ontouchstart>
     <div class="navigation-bar">
@@ -27,19 +28,20 @@
     
     <div class="main">
         <div class="tableview">
+            <!-- Data added dynamically -->
             <div class="section">
-                <header>Section 1 header</header>
-                <div class="row">Row 1</div>
-                <div class="row">Row 2</div>
-                <div class="row">Row 3</div>
-                <footer>Section 1 footer</footer>
-            </div>
-        
-            <div class="section">
-                <header>Section 2 header</header>
-                <div class="row">Row 1</div>
-                <div class="row">Row 2</div>
-                <footer>Section 2 footer</footer>
+                <header>0 days old</header>
+                <div class="row task">
+                    <div class="name">
+                        Revise Maths
+                    </div>
+                    <div>
+                        <button class="button">$300</button>
+                    </div>
+                    <div>
+                        <button class="button">Forfeit</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

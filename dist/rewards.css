@@ -1,0 +1,11 @@
+body {
+    --defaultCollectionViewCellSize: 200px;
+}
+
+.main {
+    background-color: var(--systemGroupedBackgroundColour);
+}
+
+.collectionview > .section > .cell {
+    text-align: center;
+}
