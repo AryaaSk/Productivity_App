@@ -45,13 +45,16 @@ const ClaimReward = (index: number) => {
         return;
     }
 
-    USER_DATA.balance -= cost;
+    const confirm = window.confirm(`Are you sure you want to purchase '${reward.name}' for $${cost}?`);
+    if (confirm == true) {
+        USER_DATA.balance -= cost;
 
-    SaveData(USER_DATA, USER_DATA_KEY);
-    PopulateCollectionview(USER_DATA.rewards); //for now there shouldn't be any effect, as we aren't currently locking this reward off.
-    UpdateBalance(USER_DATA.balance);
+        SaveData(USER_DATA, USER_DATA_KEY);
+        PopulateCollectionview(USER_DATA.rewards); //for now there shouldn't be any effect, as we aren't currently locking this reward off.
+        UpdateBalance(USER_DATA.balance);
 
-    alert(`Purchased '${reward.name}' for $${cost}; Enjoy the reward!`);
+        alert(`Purchased '${reward.name}' for $${cost}; Enjoy the reward!`);
+    }
 }
 
 

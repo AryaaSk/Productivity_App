@@ -9,3 +9,10 @@ body {
 .collectionview > .section > .cell {
     text-align: center;
 }
+
+.collectionview > .section > .cell h2 {
+    font-weight: 450;
+}
+.collectionview > .section > .cell h1 {
+    font-style: italic;
+}
