@@ -14,6 +14,11 @@
     <link rel="old stylesheet" href="native.css">
     <link rel="manifest" href="manifest.json">
 
+    <script src="dates.js"></script>
+    <script src="storage.js"></script>
+
+    <script src="synchronisation.js"></script>
+
     <script src="tasks.js" defer></script>
 
     <link rel="stylesheet" href="styles.css">
@@ -22,12 +27,12 @@
 <body ontouchstart>
     <div class="navigation-bar">
         <div class="leftButtons"></div>
-        <label>Tasks</label>
+        <label id="title">Tasks</label>
         <div class="rightButtons"></div>
     </div>
     
     <div class="main">
-        <div class="tableview">
+        <div class="tableview" id="tasks">
             <!-- Data added dynamically -->
             <div class="section">
                 <header>0 days old</header>
@@ -35,12 +40,8 @@
                     <div class="name">
                         Revise Maths
                     </div>
-                    <div>
-                        <button class="button">$300</button>
-                    </div>
-                    <div>
-                        <button class="button">Forfeit</button>
-                    </div>
+                    <button class="button">$300</button>
+                    <button class="button">Forfeit</button>
                 </div>
             </div>
         </div>

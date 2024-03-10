@@ -18,3 +18,10 @@ const GetData = (key: string) => {
 
     return json != null ? JSON.parse(json) : defaultData;
 }
+
+//Initialise global variables
+const SETUP: Setup = GetData(SETUP_KEY);
+const USER_DATA: UserData = GetData(USER_DATA_KEY); //load from local storage
+const HISTORY: HistoryLog[] = GetData(HISTORY_KEY);
+
+const TODAY_DATE = new Date();

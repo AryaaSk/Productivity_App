@@ -14,6 +14,11 @@
     <link rel="stylesheet" href="/Src/Native/native.css">
     <link rel="manifest" href="/Src/Native/manifest.json">
 
+    <script src="/.JS/Misc/dates.js"></script>
+    <script src="/.JS/Misc/storage.js"></script>
+
+    <script src="/.JS/Engine/synchronisation.js"></script>
+
     <script src="/.JS/Rewards/rewards.js" defer></script>
 
     <link rel="stylesheet" href="/Src/styles.css">
@@ -22,12 +27,12 @@
 <body ontouchstart>
     <div class="navigation-bar">
         <div class="leftButtons"></div>
-        <label>Rewards</label>
+        <label id="title">Rewards</label>
         <div class="rightButtons"></div>
     </div>
     
     <div class="main">
-        <div class="collectionview">
+        <div class="collectionview" id="rewards">
             <div class="section">
                 <div class="cell">
                     <div>
