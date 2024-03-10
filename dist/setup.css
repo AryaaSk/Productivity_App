@@ -21,6 +21,10 @@ body {
     place-content: center;
 }
 .tableview > .section > .setupItem {
+    margin-bottom: 9px;
+    border-bottom: var(--systemBorder);
+}
+.tableview > .section > .setupItem {
     background-color: var(--rowBackgroundColour);
 }
 .tableview > .section > .setupItem:active {

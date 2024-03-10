@@ -4,13 +4,15 @@ const UpdateBalance = (balance) => {
     const element = document.getElementById("title");
     element.innerText = `Tasks - Current Balance: $${balance}`;
 };
-const PopulateTableview = (tasks) => {
+const PopulateTasksTableview = (tasks) => {
     const tableview = document.getElementById("tasks");
     tableview.innerHTML = "";
     const CreateSection = (daysCounter) => {
         const section = document.createElement("div");
         section.className = "section";
-        section.append(`<header>${daysCounter} day${daysCounter != 1 ? 's' : ''} old</header>`);
+        const header = document.createElement("header");
+        header.innerHTML = `${daysCounter} day${daysCounter != 1 ? 's' : ''} old`;
+        section.append(header);
         return section;
     };
     let currentDayCounter = 0; //assumes tasks are given in sorted order based on dayCounter
@@ -24,7 +26,10 @@ const PopulateTableview = (tasks) => {
         }
         const element = document.createElement("div");
         element.className = "row task";
-        element.append(`<div class="name">${task.name}</div>`);
+        const nameElement = document.createElement("div");
+        nameElement.className = "name";
+        nameElement.innerHTML = task.name;
+        element.append(nameElement);
         const claimButton = document.createElement("button");
         claimButton.className = "button";
         claimButton.innerText = `$${PayoutDamping["reverseExponential"](task.payout, task.daysCounter)}`;
@@ -37,6 +42,10 @@ const PopulateTableview = (tasks) => {
         element.append(forfeitButton);
         currentSection.append(element);
     }
+    if (tasks.length == 0) {
+        currentSection.innerHTML = "<header>No tasks yet...</header>";
+    }
+    tableview.append(currentSection);
 };
 const ClaimTask = (index) => {
     //ask for summary (acts as pseudo-verfication and useful for showing progress later on)
@@ -51,7 +60,7 @@ const ClaimTask = (index) => {
     HISTORY.push({ taskName: task.name, summary: summary, payout: payout, date: FormatDate(TODAY_DATE) });
     SaveData(USER_DATA, USER_DATA_KEY);
     SaveData(HISTORY, HISTORY_KEY);
-    PopulateTableview(USER_DATA.tasks);
+    PopulateTasksTableview(USER_DATA.tasks);
     UpdateBalance(USER_DATA.balance);
     alert(`Congratulations, you completed the task '${task.name}'; $${payout} will be deposited in your account.`);
 };
@@ -62,7 +71,7 @@ const ForfeitTask = (index) => {
     if (confirm == true) {
         USER_DATA.tasks.splice(index, 1);
         SaveData(USER_DATA, USER_DATA_KEY);
-        PopulateTableview(USER_DATA.tasks);
+        PopulateTasksTableview(USER_DATA.tasks);
     }
 };
 const MainTasks = () => {
@@ -75,6 +84,6 @@ const MainTasks = () => {
     console.log(HISTORY);
     //Display data
     UpdateBalance(USER_DATA.balance);
-    PopulateTableview(USER_DATA.tasks);
+    PopulateTasksTableview(USER_DATA.tasks);
 };
 MainTasks();

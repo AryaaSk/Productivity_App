@@ -17,10 +17,14 @@ const PopulateCollectionview = (rewards) => {
         <h2>${reward.name}</h3>
         <h1>$${reward.cost}</h2>
         `;
+        rewardElement.append(wrapper);
         rewardElement.onclick = () => { ClaimReward(i); };
         section.append(rewardElement);
     }
     collectionView.append(section);
+    if (rewards.length == 0) {
+        collectionView.innerHTML = "No rewards yet, add some to create incentives!";
+    }
 };
 const ClaimReward = (index) => {
     //deduct reward's cost from balance (check if balance >= cost first), and possible remove reward
