@@ -1,11 +1,9 @@
 "use strict";
-const appearance = localStorage.getItem("appearance");
-if (appearance == null || appearance == "light") {
-    //do nothing since Native is in light mode by default
-    //LoadDarkMode();
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    LoadDarkMode();
 }
 else {
-    LoadDarkMode();
+    //do nothing since native is in light mode by default
 }
 TAB_BAR_CONFIG = [
     { iconSrc: "Assets//checkmark.svg", title: "Tasks", path: "tasks.html" },
