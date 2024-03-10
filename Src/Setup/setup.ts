@@ -31,7 +31,9 @@ const PopulateSetupTableview = (tasks: { task: Task, schedule: Schedule }[], rew
     }
     if (tasks.length == 0) {
         tableview.append(document.createElement("br"));
-        tableview.innerHTML += "<p>No tasks yet...<p>";
+        const emptyText = document.createElement("p");
+        emptyText.innerText = "No tasks yet...";
+        tableview.append(emptyText);
         tableview.append(document.createElement("br"));
         tableview.append(document.createElement("br"));
     }
@@ -66,7 +68,9 @@ const PopulateSetupTableview = (tasks: { task: Task, schedule: Schedule }[], rew
 
     if (rewards.length == 0) {
         tableview.append(document.createElement("br"));
-        tableview.innerHTML += "<p>No rewards yet...<p>"
+        const emptyText = document.createElement("p");
+        emptyText.innerText = "No rewards yet...";
+        tableview.append(emptyText);
     }
     else {
         tableview.append(rewardsSection);
@@ -143,6 +147,37 @@ const DeleteReward = (index: number) => {
     PopulateSetupTableview(SETUP.tasks, SETUP.rewards);
 }
 
+const AttachListeners = () => {
+    const importButton = document.getElementById("importState")!;
+    importButton.onclick = () => { ImportState(); };
+
+    const exportButton = document.getElementById("exportState")!;
+    exportButton.onclick = () => { ExportState(); };
+}
+
+const ImportState = () => {
+    const json = prompt("Please enter a valid exported JSON");
+    if (json == undefined || json.replaceAll(" ", "") == "") {
+        return;
+    }
+
+    const data: any = JSON.parse(json);
+    SaveData(data.userData, USER_DATA_KEY);
+    SaveData(data.setup, SETUP_KEY);
+    SaveData(data.history, HISTORY_KEY);
+    location.reload();
+}
+const ExportState = () => {
+    const combinedJSON = JSON.stringify({
+        userData: USER_DATA,
+        setup: SETUP,
+        history: HISTORY
+    });
+
+    alert(combinedJSON);
+}
+
+
 
 const MainSetup = () => {
     SYNCHRONISE_USER_DATA(TODAY_DATE);
@@ -150,5 +185,6 @@ const MainSetup = () => {
     SaveData(SETUP, SETUP_KEY);
 
     PopulateSetupTableview(SETUP.tasks, SETUP.rewards);
+    AttachListeners();
 }
 MainSetup();

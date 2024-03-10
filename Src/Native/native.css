@@ -61,7 +61,7 @@ body {
     right: 0;
 
     display: grid;
-    grid-template-columns: max-content auto max-content;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 100%;
     place-items: center;
 
@@ -70,7 +70,7 @@ body {
     z-index: 1;
     touch-action: none;
 }
-.navigation-bar > label {
+.navigation-bar > div > label {
     position: absolute; /* To make sure that title is always centered */
     left: 50%;
     top: 50%;

@@ -1,5 +1,5 @@
 body {
-    --defaultCollectionViewCellSize: 200px;
+    --defaultCollectionViewCellSize: 180px; /* Want to fit 2 per row on most devices */
 }
 
 .main {
