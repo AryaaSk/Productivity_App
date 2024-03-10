@@ -42,10 +42,11 @@ const PopulateTasksTableview = (tasks) => {
         element.append(forfeitButton);
         currentSection.append(element);
     }
-    if (tasks.length == 0) {
-        currentSection.innerHTML = "<header>No tasks yet...</header>";
-    }
     tableview.append(currentSection);
+    if (tasks.length == 0) {
+        tableview.innerHTML = "<p>No tasks yet...<p>";
+        tableview.style.textAlign = "center";
+    }
 };
 const ClaimTask = (index) => {
     //ask for summary (acts as pseudo-verfication and useful for showing progress later on)

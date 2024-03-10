@@ -23,7 +23,7 @@ const PopulateCollectionview = (rewards) => {
     }
     collectionView.append(section);
     if (rewards.length == 0) {
-        collectionView.innerHTML = "No rewards yet, add some to create incentives!";
+        collectionView.innerHTML = "<p>No rewards yet, add some to create incentives!<p>";
     }
 };
 const ClaimReward = (index) => {

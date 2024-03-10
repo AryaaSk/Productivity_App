@@ -2,6 +2,7 @@
 const appearance = localStorage.getItem("appearance");
 if (appearance == null || appearance == "light") {
     //do nothing since Native is in light mode by default
+    LoadDarkMode();
 }
 else {
     LoadDarkMode();

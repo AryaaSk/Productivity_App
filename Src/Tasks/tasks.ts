@@ -50,11 +50,12 @@ const PopulateTasksTableview = (tasks: Task[]) => {
 
         currentSection.append(element);
     }
-    if (tasks.length == 0) {
-        currentSection.innerHTML = "<header>No tasks yet...</header>"
-    }
-
     tableview.append(currentSection);
+
+    if (tasks.length == 0) {
+        tableview.innerHTML = "<p>No tasks yet...<p>";
+        tableview.style.textAlign = "center";
+    }
 }
 
 

@@ -25,7 +25,15 @@ const PopulateSetupTableview = (tasks, rewards) => {
         element.append(deleteButton);
         tasksSection.append(element);
     }
-    tableview.append(tasksSection);
+    if (tasks.length == 0) {
+        tableview.append(document.createElement("br"));
+        tableview.innerHTML += "<p>No tasks yet...<p>";
+        tableview.append(document.createElement("br"));
+        tableview.append(document.createElement("br"));
+    }
+    else {
+        tableview.append(tasksSection);
+    }
     const addRewardButton = document.createElement("button");
     addRewardButton.className = "button";
     addRewardButton.innerText = "Add Reward";
@@ -46,7 +54,13 @@ const PopulateSetupTableview = (tasks, rewards) => {
         element.append(deleteButton);
         rewardsSection.append(element);
     }
-    tableview.append(rewardsSection);
+    if (rewards.length == 0) {
+        tableview.append(document.createElement("br"));
+        tableview.innerHTML += "<p>No rewards yet...<p>";
+    }
+    else {
+        tableview.append(rewardsSection);
+    }
 };
 const AddTask = () => {
     const GetTaskSetupData = () => {

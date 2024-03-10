@@ -1,3 +1,8 @@
 #title {
     width: max-content; /* To prevent navigation bar title from overflowing onto multiple lines */
 }
+
+.tableview > p, .collectionview > p { /* Used for empty text, i.e. when there is nothing in the view */
+    margin: 0;
+    color: var(--secondaryTextColour);
+}
