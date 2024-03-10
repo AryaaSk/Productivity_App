@@ -23,7 +23,7 @@ interface Reward {
 
 //Setup stores all tasks and rewards, UserData only stores tasks and rewards for today
 interface Setup {
-    tasks: { schedule: Schedule, task: Task }[];
+    tasks: { task: Task, schedule: Schedule  }[];
     rewards: Reward[];
 }
 

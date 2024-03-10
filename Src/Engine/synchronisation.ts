@@ -14,13 +14,13 @@ const SYNCHRONISE_USER_DATA = (syncUptoDate: Date) => { //uses global variables 
             task.daysCounter += 1;
         }
 
-        ADD_AVAILABLE_TASKS(newSyncDate);
-        ADD_REWARDS();
+        ADD_USER_DATA_AVAILABLE_TASKS(newSyncDate);
+        ADD_USER_DATA_REWARDS();
 
         USER_DATA.lastScheduleUpdate = FormatDate(newSyncDate);
     }
 }
-const ADD_AVAILABLE_TASKS = (currentDate: Date) => { //adds all available tasks for specific date in setup
+const ADD_USER_DATA_AVAILABLE_TASKS = (currentDate: Date) => { //adds all available tasks for specific date in setup
     const GetTasks = (setup: Setup, date: Date) => {
         //looks at setup and returns schedule for the date provided
         //note that once tasks have been returned, their nextIteration attribute is incremented
@@ -51,7 +51,7 @@ const ADD_AVAILABLE_TASKS = (currentDate: Date) => { //adds all available tasks 
     const newTasks = GetTasks(SETUP, currentDate);
     USER_DATA.tasks = USER_DATA.tasks.concat(newTasks);
 }
-const ADD_REWARDS = () => { //rewards doesn't depend on date
+const ADD_USER_DATA_REWARDS = () => { //rewards doesn't depend on date
     const rewards = JSON.parse(JSON.stringify(SETUP.rewards));
     USER_DATA.rewards = rewards;
 }

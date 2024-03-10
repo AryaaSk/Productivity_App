@@ -9,7 +9,7 @@ const PopulateSetupData = (setup: Setup) => {
 
         element.innerHTML = `${task.name}<br>
         Payout: $${task.payout}<br>
-        Schedule Mode: ${scheduleModeMaps[schedule.mode]}; ${schedule.data} <br>
+        Schedule Mode: ${scheduleModeMaps[schedule.mode]}; ${schedule.data}<br>
         Next Assignment ${ConvertToFullDate(schedule.nextIteration)}<br>`;
 
         const deleteButton = document.createElement("button");

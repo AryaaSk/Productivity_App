@@ -98,7 +98,7 @@ const GetRewardSetupData = () => {
 }
 const AddReward = (reward: Reward) => {
     SETUP.rewards.push(reward);
-    UpdateUserData(USER_DATA, SETUP, new Date(USER_DATA.lastScheduleUpdate)); //update to check for any new tasks added today
+    UpdateUserData(USER_DATA, SETUP, new Date(USER_DATA.lastScheduleUpdate)); //update to check for any new rewards added today
     SaveData(USER_DATA, USER_DATA_KEY);
     SaveData(SETUP, SETUP_KEY);
 }
