@@ -50,3 +50,14 @@ const ADD_USER_DATA_REWARDS = () => {
     const rewards = JSON.parse(JSON.stringify(SETUP.rewards));
     USER_DATA.rewards = rewards;
 };
+const CLEAN_SETUP = () => {
+    let i = 0;
+    while (i != SETUP.tasks.length) {
+        if (SETUP.tasks[i].schedule.nextIteration == "-") {
+            SETUP.tasks.splice(i, 1);
+        }
+        else {
+            i += 1;
+        }
+    }
+};

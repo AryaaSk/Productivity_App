@@ -144,6 +144,7 @@ const ExportState = () => {
 };
 const MainSetup = () => {
     SYNCHRONISE_USER_DATA(TODAY_DATE);
+    CLEAN_SETUP();
     SaveData(USER_DATA, USER_DATA_KEY);
     SaveData(SETUP, SETUP_KEY);
     PopulateSetupTableview(SETUP.tasks, SETUP.rewards);
