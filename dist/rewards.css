@@ -11,8 +11,11 @@ body {
 }
 
 .collectionview > .section > .cell h2 {
+    margin: 0;
+    margin-bottom: 10px;
     font-weight: 450;
 }
 .collectionview > .section > .cell h1 {
+    margin: 0;
     font-style: italic;
 }
