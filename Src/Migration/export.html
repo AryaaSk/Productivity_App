@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Taskly</title>
+
+    <script src="/.JS/Native/native.js"></script>
+    <script src="/.JS/Native/nativeConfig.js" defer></script>
+    <link rel="stylesheet" href="/Src/Native/native.css">
+    <link rel="manifest" href="/Src/Native/manifest.json">
+
+    <script src="/.JS/Misc/dates.js"></script>
+    <script src="/.JS/Misc/storage.js"></script>
+
+    <style>
+        #textarea {
+            -webkit-touch-callout: all; /* iOS Safari */
+            -webkit-user-select: all; /* Safari */
+            -khtml-user-select: all; /* Konqueror HTML */
+            -moz-user-select: all; /* Old versions of Firefox */
+                -ms-user-select: all; /* Internet Explorer/Edge */
+                    user-select: all; /* Non-prefixed version, currently
+                                        supported by Chrome, Edge, Opera and Firefox */
+        }
+    </style>
+</head>
+<body ontouchstart class="noTabBar">
+    <div class="navigation-bar">
+        <div class="leftButtons">
+            <button class="button" onclick="window.history.go(-1);">Back</button>
+        </div>
+        <div><label>Exported JSON</label></div>
+        <div class="rightButtons"></div>
+    </div>
+    
+    <div class="main" id="textarea"></div>
+    
+    <script>
+        const combinedJSON = JSON.stringify({
+            userData: USER_DATA,
+            setup: SETUP,
+            history: HISTORY
+        });
+
+        const main = document.getElementById("textarea");
+        main.innerText = combinedJSON;
+    </script>
+</body>
+</html>

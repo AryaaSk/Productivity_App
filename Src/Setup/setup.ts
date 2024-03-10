@@ -168,13 +168,7 @@ const ImportState = () => {
     location.reload();
 }
 const ExportState = () => {
-    const combinedJSON = JSON.stringify({
-        userData: USER_DATA,
-        setup: SETUP,
-        history: HISTORY
-    });
-
-    alert(combinedJSON);
+    location.href = "/Src/Migration/export.html"
 }
 
 

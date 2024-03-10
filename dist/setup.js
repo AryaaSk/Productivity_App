@@ -140,12 +140,7 @@ const ImportState = () => {
     location.reload();
 };
 const ExportState = () => {
-    const combinedJSON = JSON.stringify({
-        userData: USER_DATA,
-        setup: SETUP,
-        history: HISTORY
-    });
-    alert(combinedJSON);
+    location.href = "export.html";
 };
 const MainSetup = () => {
     SYNCHRONISE_USER_DATA(TODAY_DATE);
