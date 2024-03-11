@@ -42,7 +42,9 @@ const PopulateTasksTableview = (tasks) => {
         element.append(forfeitButton);
         currentSection.append(element);
     }
-    tableview.append(currentSection);
+    if (currentSection.innerHTML != "<header>0 days old</header>") {
+        tableview.append(currentSection); //only add final section if there are tasks inside of it
+    }
     if (tasks.length == 0) {
         tableview.innerHTML = "<p>No tasks yet...<p>";
         tableview.style.textAlign = "center";

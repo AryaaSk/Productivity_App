@@ -192,7 +192,7 @@ body {
     width: 100%;
 
     background-color: var(--systemGroupedBackgroundColour);
-    overflow: auto;
+    overflow-y: auto;
 }
 .tableview > .section {
     height: max-content;
@@ -258,7 +258,7 @@ body {
     align-items: center;
 
     background-color: var(--systemGroupedBackgroundColour);
-    overflow: auto;
+    overflow-y: auto;
 }
 .collectionview > .section {
     height: max-content;
