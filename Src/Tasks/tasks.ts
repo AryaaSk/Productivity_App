@@ -23,7 +23,9 @@ const PopulateTasksTableview = (tasks: Task[]) => {
     for (let i = tasks.length - 1; i >= 0; i -= 1) {
         const task = tasks[i];
         if (task.daysCounter != currentDayCounter) { //add a new section
-            tableview.append(currentSection);
+            if (currentSection.innerHTML != "<header>0 days old</header>") {
+                tableview.append(currentSection); //only add final section if there are tasks inside of it
+            }
 
             currentDayCounter = task.daysCounter;
             currentSection = CreateSection(currentDayCounter);
@@ -51,9 +53,7 @@ const PopulateTasksTableview = (tasks: Task[]) => {
 
         currentSection.append(element);
     }
-    if (currentSection.innerHTML != "<header>0 days old</header>") {
-        tableview.append(currentSection); //only add final section if there are tasks inside of it
-    }
+    tableview.append(currentSection);
 
     if (tasks.length == 0) {
         tableview.innerHTML = "<p>No tasks yet...<p>";
