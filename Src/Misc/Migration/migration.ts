@@ -1,7 +1,13 @@
 //When making updates to the JSON schema (the data structure of SETUP, USER_DATA and HISTORY) I'll need to update older users to the new schema before the app can use the data at all
 //Asssume storage.js has already been loaded
+const APP_VERSION = 1.1;
 
-//Initialise global variables
+//Initialise global variables (with defaults if required)
+const DEFAULTS: { [k: string] : any } = {}
+DEFAULTS[SETUP_KEY] = { tasks: [], rewards: [], goals: [] };
+DEFAULTS[USER_DATA_KEY] = { balance: 0, tasks: [], rewards: [], goals: [], lastScheduleUpdate: FormatDate(new Date()), appVersion: APP_VERSION };
+DEFAULTS[HISTORY_KEY] = [];
+
 const TODAY_DATE = new Date();
 
 const SETUP: Setup = GetData(SETUP_KEY);
@@ -19,6 +25,16 @@ if (USER_DATA.appVersion == undefined) {
     //Added attribute appVersion to userData
     USER_DATA.appVersion = 1;
     console.log("Updated to app version 1");
+}
+
+if (USER_DATA.appVersion == 1) {
+    //Migration changes appversion 1 -> 1.1:
+    //Added goal attribute to setup and userData
+    SETUP.goals = [];
+    USER_DATA.goals = [];
+
+    USER_DATA.appVersion = 1.1;
+    console.log("Updated to app version 1.1");
 }
 
 //Once all data is upto date, we can save the new data

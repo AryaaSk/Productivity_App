@@ -77,9 +77,9 @@ const ClaimTask = (index: number) => {
     HISTORY.push({ taskName: task.name, summary: summary, payout: payout, date: FormatDate(TODAY_DATE) });
     SaveData(USER_DATA, USER_DATA_KEY);
     SaveData(HISTORY, HISTORY_KEY);
+
     PopulateTasksTableview(USER_DATA.tasks);
     UpdateBalance(USER_DATA.balance);
-
     alert(`Congratulations, you completed the task '${task.name}'; $${payout} will be deposited in your account.`);
 }
 

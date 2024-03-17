@@ -24,6 +24,9 @@ const AttachListenersAddTask = () => {
             }
         };
     }
+    //Set default dates for date pickers
+    document.getElementById("periodicStartingFrom").valueAsDate = new Date();
+    document.getElementById("oneTimeDate").valueAsDate = new Date();
     const LinkSliderToLabel = (sliderID, labelID) => {
         const slider = document.getElementById(sliderID);
         const label = document.getElementById(labelID);

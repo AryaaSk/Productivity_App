@@ -21,16 +21,25 @@ interface Reward {
     cost: number;
 }
 
-//Setup stores all tasks and rewards, UserData only stores tasks and rewards for today
+interface Goal {
+    name: string;
+    payout: number;
+}
+
+//Setup stores all tasks, rewards and goals; UserData only stores tasks and rewards for today
+//Goals do not actually need to be stored in UserData since they are not recurring and thus do not need to be scheduled - they are always one time
+//However I will transfer them to userData for consistency
 interface Setup {
     tasks: { task: Task, schedule: Schedule  }[];
     rewards: Reward[];
+    goals: Goal[];
 }
 
 interface UserData {
     balance: number;
     tasks: Task[];
     rewards: Reward[];
+    goals: Goal[];
 
     lastScheduleUpdate: string; //mm/dd/yyyy; this prevents user from making changes to setup and seeing them applied on the same day
     appVersion: number;

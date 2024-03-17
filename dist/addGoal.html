@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Taskly</title>
+
+    <link rel="stylesheet" href="native.css">
+    <script src="native.js"></script>
+    <script src="nativeConfig.js" defer></script>
+    <link rel="manifest" href="manifest.json">
+    
+    <script src="dates.js"></script>
+    <script src="storage.js"></script>
+    <script src="migration.js"></script>
+
+    <script src="synchronisation.js"></script>
+    <script src="parameters.js"></script>
+
+    <script src="addGoal.js" defer></script>
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="addTask.css">
+</head>
+<body ontouchstart>
+    <div class="navigation-bar">
+        <div class="leftButtons">
+            <button class="button" id="cancel" style="color: red;" onclick="location.href = 'setup.html';">Cancel</button>
+        </div>
+        <div><label>Add Goal</label></div>
+        <div class="rightButtons">
+            <button class="button" id="add">Add</button>
+        </div>
+    </div>
+    
+    <div class="main" style="background-color: var(--systemGroupedBackgroundColour);">
+        <div class="tableview" id="tableview">
+            <div class="section">
+                <header>Goal</header>
+                <div class="row">
+                    <input type="text" class="textfield rowElement" id="name" placeholder="Goal Name">
+                </div>
+            </div>
+
+            <div class="section">
+                <header>Payout</header>
+                <div class="row goalSlider">
+                    <div class="sliderRowWrapper">
+                        <div>Accomplishment</div>
+                        <input type="range" class="textfield slider" id="accomplishmentSlider" value="3" min="0" max="10" step="0.5">
+                        <div id="accomplishmentValue">3.0</div>
+                    </div>
+                </div>
+                <div class="row goalSlider">
+                    <div class="sliderRowWrapper">
+                        <div>Time</div>
+                        <input type="range" class="textfield slider" id="timeSlider" value="3" min="0" max="10" step="0.5">
+                        <div id="timeValue">3.0</div>
+                    </div>
+                </div>
+                <div class="row">
+                    Payout
+                    <div class="rightAlignedData">
+                    <label id="payout">$2611</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="tab-bar"></div>
+</body>
+</html>

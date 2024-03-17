@@ -29,6 +29,10 @@
     grid-template-columns: 20% 70% 10%;
     place-items: center;
 }
+.goalSlider > .sliderRowWrapper {
+    grid-template-columns: 35% 55% 10%;
+}
+
 .sliderRowWrapper > div:first-child {
     width: 100%;
 }

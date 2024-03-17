@@ -26,6 +26,10 @@ const AttachListenersAddTask = () => {
         }
     }
 
+    //Set default dates for date pickers
+    (<HTMLInputElement>document.getElementById("periodicStartingFrom")!).valueAsDate = new Date();
+    (<HTMLInputElement>document.getElementById("oneTimeDate")!).valueAsDate = new Date();
+
     const LinkSliderToLabel = (sliderID: string, labelID: string) => {
         const slider = <HTMLInputElement>document.getElementById(sliderID)!;
         const label = document.getElementById(labelID)!;

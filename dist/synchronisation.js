@@ -15,6 +15,7 @@ const SYNCHRONISE_USER_DATA = (syncUptoDate) => {
         }
         ADD_USER_DATA_AVAILABLE_TASKS(newSyncDate);
         ADD_USER_DATA_REWARDS();
+        ADD_USER_DATA_GOALS();
         USER_DATA.lastScheduleUpdate = FormatDate(newSyncDate);
     }
 };
@@ -49,6 +50,10 @@ const ADD_USER_DATA_AVAILABLE_TASKS = (currentDate) => {
 const ADD_USER_DATA_REWARDS = () => {
     const rewards = JSON.parse(JSON.stringify(SETUP.rewards));
     USER_DATA.rewards = rewards;
+};
+const ADD_USER_DATA_GOALS = () => {
+    const goals = JSON.parse(JSON.stringify(SETUP.goals));
+    USER_DATA.goals = goals;
 };
 const CLEAN_SETUP = () => {
     let i = 0;

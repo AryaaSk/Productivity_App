@@ -1,0 +1,28 @@
+.main {
+    background-color: var(--systemGroupedBackgroundColour);
+}
+
+.tableview > .section > .goal {
+    height: 162px;
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 60% 40%;
+    place-items: center;
+}
+.tableview > .section > .goal > .name {
+    height: 100%;
+    width: 100%;
+
+    font-size: x-large;
+    font-weight: bold;
+    text-decoration: underline;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.tableview > .section > .goal > button {
+    font-size: large;
+    font-weight: bolder;
+}

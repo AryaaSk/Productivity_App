@@ -1,4 +1,4 @@
-const PopulateSetupTableview = (tasks: { task: Task, schedule: Schedule }[], rewards: Reward[]) => {
+const PopulateSetupTableview = (tasks: { task: Task, schedule: Schedule }[], rewards: Reward[], goals: Goal[]) => {
     const tableview = document.getElementById("setupData")!;
     tableview.innerHTML = "";
 
@@ -65,7 +65,6 @@ const PopulateSetupTableview = (tasks: { task: Task, schedule: Schedule }[], rew
 
         rewardsSection.append(element);
     }
-
     if (rewards.length == 0) {
         tableview.append(document.createElement("br"));
         const emptyText = document.createElement("p");
@@ -74,6 +73,40 @@ const PopulateSetupTableview = (tasks: { task: Task, schedule: Schedule }[], rew
     }
     else {
         tableview.append(rewardsSection);
+    }
+
+    const addGoalButton = document.createElement("button");
+    addGoalButton.className = "button";
+    addGoalButton.innerText = "Add Goal";
+    addGoalButton.onclick = () => { AddGoal(); };
+    tableview.append(addGoalButton);
+
+    const goalsSection = document.createElement("div");
+    goalsSection.className = "section";
+    for (const [i, goal] of goals.entries()) {
+        const element = document.createElement("div");
+        element.className = "row setupItem";
+
+        element.innerHTML = `
+        ${goal.name}<br>
+        Payout: $${goal.payout}<br>`;
+
+        const deleteButton = document.createElement("button");
+        deleteButton.className = "button";
+        deleteButton.innerText = "Delete";
+        deleteButton.onclick = () => { DeleteGoal(i); };
+        element.append(deleteButton);
+
+        goalsSection.append(element);
+    }
+    if (goals.length == 0) {
+        tableview.append(document.createElement("br"));
+        const emptyText = document.createElement("p");
+        emptyText.innerText = "No goals yet...";
+        tableview.append(emptyText);
+    }
+    else {
+        tableview.append(goalsSection);
     }
 }
 
@@ -118,7 +151,7 @@ const DeleteTask = (index: number) => {
     SETUP.tasks.splice(index, 1); //if the task was due today then it'll already have been added to USER DATA, therefore this will only affect future assignments
     SaveData(SETUP, SETUP_KEY);
 
-    PopulateSetupTableview(SETUP.tasks, SETUP.rewards);
+    PopulateSetupTableview(SETUP.tasks, SETUP.rewards, SETUP.goals);
 }
 
 const AddReward = () => {
@@ -150,8 +183,24 @@ const DeleteReward = (index: number) => {
     SaveData(USER_DATA, USER_DATA_KEY);
     SaveData(SETUP, SETUP_KEY);
 
-    PopulateSetupTableview(SETUP.tasks, SETUP.rewards);
+    PopulateSetupTableview(SETUP.tasks, SETUP.rewards, SETUP.goals);
 }
+
+const AddGoal = () => {
+    location.href = "/Src/Setup/AddGoal/addGoal.html";
+}
+const DeleteGoal = (index: number) => {
+    SETUP.goals.splice(index, 1);
+
+    ADD_USER_DATA_GOALS();
+
+    SaveData(USER_DATA, USER_DATA_KEY);
+    SaveData(SETUP, SETUP_KEY);
+
+    PopulateSetupTableview(SETUP.tasks, SETUP.rewards, SETUP.goals);
+}
+
+
 
 const AttachListeners = () => {
     const importButton = document.getElementById("importState")!;
@@ -185,7 +234,7 @@ const MainSetup = () => {
     SaveData(USER_DATA, USER_DATA_KEY);
     SaveData(SETUP, SETUP_KEY);
 
-    PopulateSetupTableview(SETUP.tasks, SETUP.rewards);
+    PopulateSetupTableview(SETUP.tasks, SETUP.rewards, SETUP.goals);
     AttachListeners();
 }
 MainSetup();
