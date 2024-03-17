@@ -1,7 +1,3 @@
-body {
-    --rowBackgroundColour: var(--systemObjectBackgroundColour)
-}
-
 .main {
     background-color: var(--systemGroupedBackgroundColour);
 }
@@ -25,10 +21,4 @@ body {
 .tableview > .section > .setupItem {
     margin-bottom: 9px;
     border-bottom: var(--systemBorder);
-}
-.tableview > .section > .setupItem {
-    background-color: var(--rowBackgroundColour);
-}
-.tableview > .section > .setupItem:active {
-    background-color: var(--rowBackgroundColour);
 }

@@ -31,18 +31,22 @@
         }
     </style>
 </head>
-<body ontouchstart class="noTabBar">
+<body ontouchstart>
     <div class="navigation-bar">
         <div class="leftButtons">
-            <button class="button" onclick="window.history.go(-1);">Back</button>
+            <button class="button" onclick="location.href = '/Src/Setup/setup.html';">Back</button>
         </div>
         <div><label>Exported JSON</label></div>
         <div class="rightButtons"></div>
     </div>
     
     <div class="main" id="textarea"></div>
+
+    <div class="tab-bar"></div>
     
-    <script>
+    <script defer>
+        InitTabBar();
+
         const combinedJSON = JSON.stringify({
             userData: USER_DATA,
             setup: SETUP,

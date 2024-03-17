@@ -78,6 +78,9 @@ const PopulateSetupTableview = (tasks: { task: Task, schedule: Schedule }[], rew
 }
 
 const AddTask = () => {
+    location.href = "/Src/Setup/AddTask/addTask.html";
+
+    /*
     const GetTaskSetupData = () => {
         const name = prompt("Task Name")!;
         const payout = Number(prompt("Payout: $"))
@@ -110,6 +113,7 @@ const AddTask = () => {
     SaveData(SETUP, SETUP_KEY);
 
     PopulateSetupTableview(SETUP.tasks, SETUP.rewards);
+    */
 }
 const DeleteTask = (index: number) => {
     SETUP.tasks.splice(index, 1); //if the task was due today then it'll already have been added to USER DATA, therefore this will only affect future assignments

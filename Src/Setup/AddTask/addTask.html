@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Taskly</title>
+
+    <link rel="stylesheet" href="/Src/Native/native.css">
+    <script src="/.JS/Native/native.js"></script>
+    <script src="/.JS/Native/nativeConfig.js" defer></script>
+    <link rel="manifest" href="/Src/Native/manifest.json">
+    
+    <script src="/.JS/Misc/dates.js"></script>
+    <script src="/.JS/Misc/storage.js"></script>
+
+    <script src="/.JS/Engine/synchronisation.js"></script>
+    <script src="/.JS/Engine/parameters.js"></script>
+
+    <script src="/.JS/Setup/AddTask/addTask.js" defer></script>
+
+    <link rel="stylesheet" href="/Src/styles.css">
+    <link rel="stylesheet" href="/Src/Setup/AddTask/addTask.css">
+</head>
+<body ontouchstart>
+    <div class="navigation-bar">
+        <div class="leftButtons">
+            <button class="button" id="cancel" style="color: red;" onclick="location.href = '/Src/Setup/setup.html';">Cancel</button>
+        </div>
+        <div><label>Add Task</label></div>
+        <div class="rightButtons">
+            <button class="button" id="add">Add</button>
+        </div>
+    </div>
+    
+    <div class="main">
+        <div class="tableview" id="tableview">
+            <div class="section" style="padding-bottom: 0;">
+                <header>Task & Schedule</header>
+                <div class="row">
+                    <input type="text" class="textfield rowElement" id="name" placeholder="Task Name">
+                </div>
+
+                <br> <br>
+            </div>
+
+            <div class="section" style="padding-bottom: 0;">
+                <select id="schedulingModeSelect" class="textfield select">
+                    <option value="periodic">Periodic</option>
+                    <option value="specificDays">Specific Days of the Week</option>
+                    <option value="oneTime">One-time Task</option>
+                </select>
+
+                <br> <br>
+            </div>
+
+            <!-- Only one scheduling data input will be shown at a time depending on the schedulingMode selected -->
+            <div class="section" id="periodic">
+                <div class="row">
+                    Repeat every
+                    <div class="rightAlignedData">
+                        <input type="number" class="textfield rowElement" id="periodicRepeat" value="1" min="1"> days
+                    </div>
+                </div>
+                <div class="row">
+                    Starting from
+                    <div class="rightAlignedData">
+                        <input type="date" class="textfield rowElement" id="periodicStartingFrom">
+                    </div>
+                </div>
+            </div>
+
+            <div class="section" id="specificDays" style="display: none;">
+                <div class="row clickable" id="Monday" selected="false">Monday<div class="rightAlignedData"></div></div>
+                <div class="row clickable" id="Tuesday" selected="false">Tuesday<div class="rightAlignedData"></div></div>
+                <div class="row clickable" id="Wednesday" selected="false">Wednesday<div class="rightAlignedData"></div></div>
+                <div class="row clickable" id="Thursday" selected="false">Thursday<div class="rightAlignedData"></div></div>
+                <div class="row clickable" id="Friday" selected="false">Friday<div class="rightAlignedData"></div></div>
+                <div class="row clickable" id="Saturday" selected="false">Saturday<div class="rightAlignedData"></div></div>
+                <div class="row clickable" id="Sunday" selected="false">Sunday<div class="rightAlignedData"></div></div>
+            </div>
+
+            <div class="section" id="oneTime" style="display: none;">
+                <div class="row">
+                    Date
+                    <div class="rightAlignedData">
+                        <input type="date" class="textfield rowElement" id="oneTimeDate">
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <header>Payout</header>
+                <div class="row">
+                    <div class="sliderRowWrapper">
+                        <div>Benefit</div>
+                        <input type="range" class="textfield slider" id="benefitSlider" value="5" min="0" max="10" step="0.5">
+                        <div id="benefitValue">5.0</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="sliderRowWrapper">
+                        <div>Difficulty</div>
+                        <input type="range" class="textfield slider" id="difficultySlider" value="5" min="0" max="10" step="0.5">
+                        <div id="difficultyValue">5.0</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="sliderRowWrapper">
+                        <div>Time</div>
+                        <input type="range" class="textfield slider" id="timeSlider" value="5" min="0" max="10" step="0.5">
+                        <div id="timeValue">5.0</div>
+                    </div>
+                </div>
+                <div class="row">
+                    Payout
+                    <div class="rightAlignedData">
+                    <label id="payout">$380</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="tab-bar"></div>
+</body>
+</html>

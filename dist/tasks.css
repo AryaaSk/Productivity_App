@@ -1,7 +1,3 @@
-body {
-    --rowBackgroundColour: var(--systemObjectBackgroundColour)
-}
-
 .main {
     background-color: var(--systemGroupedBackgroundColour);
 }
@@ -10,14 +6,9 @@ body {
     height: 81px;
     width: 100%;
 
-    background-color: var(--rowBackgroundColour);
-
     display: grid;
     grid-template-columns: 50% 25% 25%;
     place-items: center;
-}
-.tableview > .section > .task:active { 
-    background-color: var(--rowBackgroundColour);
 }
 .tableview > .section > .task > .name {
     height: 100%;

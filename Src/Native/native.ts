@@ -19,9 +19,10 @@ const LoadDarkMode = () => {
 
 
 interface TabBarItem {
-    iconSrc: string,
-    title: string,
-    path: string
+    iconSrc: string;
+    title: string;
+    path: string;
+    subpaths?: string[]; //inefficient but clearer and n will not be large
 }
 let TAB_BAR_CONFIG: TabBarItem[] = [];
 
@@ -35,7 +36,17 @@ const InitTabBar = async () => { //uses global TAB_BAR_CONFIG variable
         const element = document.createElement("div");
         element.className = "item";
 
-        const fillColour = (item.path.endsWith(currentPage) == true) ? "#0a84ff" : "#878787";
+        //check whether current page is a subpage of current item or is the specified path
+        let currentPageSelected = item.path.endsWith(currentPage);
+        if (item.subpaths != undefined) {
+            for (const subpath of item.subpaths) {
+                if (subpath.endsWith(currentPage)) {
+                    currentPageSelected = true;
+                }
+            }
+        }
+
+        const fillColour = (currentPageSelected) ? "#0a84ff" : "#878787";
         const svg = await ChangeSVGFill(item.iconSrc, fillColour);
 
         element.innerHTML = `

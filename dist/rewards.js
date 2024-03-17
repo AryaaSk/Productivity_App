@@ -11,7 +11,7 @@ const PopulateCollectionview = (rewards) => {
     section.className = "section";
     for (const [i, reward] of rewards.entries()) {
         const rewardElement = document.createElement("div");
-        rewardElement.className = "cell";
+        rewardElement.className = "cell clickable";
         const wrapper = document.createElement("div");
         wrapper.innerHTML = `
         <h2>${reward.name}</h3>

@@ -1,0 +1,108 @@
+.rowElement {
+    height: 100%;
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background-color: none;
+    border: none;
+}
+
+.section > .row {
+    white-space: nowrap;
+    padding-right: 15px !important; /* Dual-sided rows need padding on both sides */
+}
+.rightAlignedData {
+    width: 100%;
+
+    display: flex;
+    justify-content: right;
+}
+
+.select {
+    height: var(--defaultTableviewCellHeight);
+    width: 63%;
+
+    position:relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#periodicRepeat {
+    width: max-content;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    text-align: right;
+}
+#periodicStartingFrom {
+    width: max-content;
+}
+
+#specificDays > .row > .rightAlignedData {
+    margin-right: 10px;
+}
+.row[selected='true'] > .rightAlignedData::after { /* Current day's row is selected */
+    content: "✓";
+    color: var(--linkColour);
+}
+
+#oneTimeDate {
+    width: max-content;
+}
+
+
+.sliderRowWrapper {
+    height: 100%;
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 20% 70% 10%;
+    place-items: center;
+}
+.sliderRowWrapper > div:first-child {
+    width: 100%;
+}
+.sliderRowWrapper > div:last-child {
+    width: 100%;
+    text-align: right;
+}
+.slider {
+    width: 100%;
+    height: max-content;
+
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    border: none;
+}
+.slider::-webkit-slider-runnable-track  {
+    background: var(--linkColour);
+    height: 2px;
+}
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    margin-top: -7.5px;
+
+    background-color: var(--textColour);
+    height: 1.25rem;
+    width: 1.25rem;
+    border-radius: 50%;
+}
+.slider::-moz-range-track {
+    background: var(--linkColour);
+    height: 2px;
+}
+.slider::-moz-range-thumb {
+    background-color: var(--textColour);
+    height: 1.25rem;
+    width: 1.25rem;
+    border-radius: 50%;
+}
+
+#payout {
+    color: var(--secondaryTextColour);
+}

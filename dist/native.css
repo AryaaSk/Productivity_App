@@ -216,7 +216,7 @@ body {
     background-color: var(--systemObjectBackgroundColour);
     transition: 100ms background-color;
 }
-.tableview > .section > .row:active {
+.tableview > .section > .clickable:active {
     background-color: var(--systemHighlightBackgroundColour);
 }
 .tableview > .section > .row:last-of-type {
@@ -286,6 +286,6 @@ body {
     background-color: var(--systemObjectBackgroundColour);
     transition: 100ms background-color;
 }
-.collectionview > .section > .cell:active {
+.collectionview > .section > .clickable:active {
     background-color: var(--systemHighlightBackgroundColour);
 }

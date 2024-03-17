@@ -67,14 +67,17 @@ const PopulateSetupTableview = (tasks, rewards) => {
     }
 };
 const AddTask = () => {
+    location.href = "addTask.html";
+    /*
     const GetTaskSetupData = () => {
-        const name = prompt("Task Name");
-        const payout = Number(prompt("Payout: $"));
+        const name = prompt("Task Name")!;
+        const payout = Number(prompt("Payout: $"))
         const scheduleMode = prompt("Schedule Mode: periodic | specificDays | oneTime");
-        const scheduleData = scheduleMode == "oneTime" ? prompt("Schedule Data: number | number[] | mm/dd/yyyy") : JSON.parse(prompt("Schedule Data: number | number[] | mm/dd/yyyy"));
+        const scheduleData = scheduleMode == "oneTime" ? prompt("Schedule Data: number | number[] | mm/dd/yyyy") : JSON.parse(prompt("Schedule Data: number | number[] | mm/dd/yyyy")!)
+    
         let nextIteration = "";
         if (scheduleMode == "periodic") {
-            nextIteration = prompt("Next Assignment: mm/dd/yyyy");
+            nextIteration = prompt("Next Assignment: mm/dd/yyyy")!;
         }
         else if (scheduleMode == "specificDays") { //next iteration can be calculated if mode is
             //start from CURRENT_DATE and find next date which is one of the mentioned days
@@ -84,16 +87,21 @@ const AddTask = () => {
         else if (scheduleMode == "oneTime") {
             nextIteration = scheduleData; //already given date
         }
+    
         return { name, payout, scheduleMode, scheduleData, nextIteration };
-    };
+    }
+
     const { name, payout, scheduleMode, scheduleData, nextIteration } = GetTaskSetupData();
-    const task = { name: name, payout: payout, daysCounter: 0 };
-    const schedule = { mode: scheduleMode, data: scheduleData, nextIteration: nextIteration };
+    const task: Task = { name: name, payout: payout, daysCounter: 0 };
+    const schedule: Schedule = { mode: <"periodic" | "specificDays" | "oneTime">scheduleMode, data: scheduleData, nextIteration: nextIteration };
     SETUP.tasks.push({ task: task, schedule: schedule });
+
     ADD_USER_DATA_AVAILABLE_TASKS(TODAY_DATE); //update to check for any new tasks added today
     SaveData(USER_DATA, USER_DATA_KEY);
     SaveData(SETUP, SETUP_KEY);
+
     PopulateSetupTableview(SETUP.tasks, SETUP.rewards);
+    */
 };
 const DeleteTask = (index) => {
     SETUP.tasks.splice(index, 1); //if the task was due today then it'll already have been added to USER DATA, therefore this will only affect future assignments

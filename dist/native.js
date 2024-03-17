@@ -18,7 +18,16 @@ const InitTabBar = async () => {
     for (const item of TAB_BAR_CONFIG) {
         const element = document.createElement("div");
         element.className = "item";
-        const fillColour = (item.path.endsWith(currentPage) == true) ? "#0a84ff" : "#878787";
+        //check whether current page is a subpage of current item or is the specified path
+        let currentPageSelected = item.path.endsWith(currentPage);
+        if (item.subpaths != undefined) {
+            for (const subpath of item.subpaths) {
+                if (subpath.endsWith(currentPage)) {
+                    currentPageSelected = true;
+                }
+            }
+        }
+        const fillColour = (currentPageSelected) ? "#0a84ff" : "#878787";
         const svg = await ChangeSVGFill(item.iconSrc, fillColour);
         element.innerHTML = `
         ${svg}
