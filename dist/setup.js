@@ -109,18 +109,25 @@ const DeleteTask = (index) => {
     PopulateSetupTableview(SETUP.tasks, SETUP.rewards);
 };
 const AddReward = () => {
+    location.href = "addReward.html";
+    /*
     const GetRewardSetupData = () => {
-        const name = prompt("Reward Name");
+        const name = prompt("Reward Name")!;
         const cost = Number(prompt("Cost: $"));
+    
         return { name, cost };
-    };
+    }
+
     const { name, cost } = GetRewardSetupData();
-    const reward = { name: name, cost: cost };
+    const reward: Reward = { name: name, cost: cost };
     SETUP.rewards.push(reward);
+
     ADD_USER_DATA_REWARDS();
     SaveData(USER_DATA, USER_DATA_KEY);
     SaveData(SETUP, SETUP_KEY);
+
     PopulateSetupTableview(SETUP.tasks, SETUP.rewards);
+    */
 };
 const DeleteReward = (index) => {
     SETUP.rewards.splice(index, 1);

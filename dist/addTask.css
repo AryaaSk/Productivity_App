@@ -1,3 +1,4 @@
+/* Using this CSS file for both Add Task and Add Reward */
 .rowElement {
     height: 100%;
     width: 100%;
@@ -19,39 +20,6 @@
     display: flex;
     justify-content: right;
 }
-
-.select {
-    height: var(--defaultTableviewCellHeight);
-    width: 63%;
-
-    position:relative;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-#periodicRepeat {
-    width: max-content;
-    padding-left: 10px;
-    padding-right: 10px;
-
-    text-align: right;
-}
-#periodicStartingFrom {
-    width: max-content;
-}
-
-#specificDays > .row > .rightAlignedData {
-    margin-right: 10px;
-}
-.row[selected='true'] > .rightAlignedData::after { /* Current day's row is selected */
-    content: "✓";
-    color: var(--linkColour);
-}
-
-#oneTimeDate {
-    width: max-content;
-}
-
 
 .sliderRowWrapper {
     height: 100%;
@@ -87,7 +55,8 @@
     appearance: none;
     margin-top: -7.5px;
 
-    background-color: var(--textColour);
+    background-color: whitesmoke; /* Independant of colour mode */
+    border: var(--systemBorder);
     height: 1.25rem;
     width: 1.25rem;
     border-radius: 50%;
@@ -97,12 +66,54 @@
     height: 2px;
 }
 .slider::-moz-range-thumb {
-    background-color: var(--textColour);
+    background-color: whitesmoke;
+    border: var(--systemBorder);
     height: 1.25rem;
     width: 1.25rem;
     border-radius: 50%;
 }
 
+
+
+/* Add Tasks specific CSS */
+.select {
+    height: var(--defaultTableviewCellHeight);
+    width: 63%;
+
+    position:relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#periodicRepeat {
+    width: max-content;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    text-align: right;
+}
+#periodicStartingFrom {
+    width: max-content;
+}
+
+#specificDays > .row > .rightAlignedData {
+    margin-right: 10px;
+}
+.row[selected='true'] > .rightAlignedData::after { /* Current day's row is selected */
+    content: "✓";
+    color: var(--linkColour);
+}
+
+#oneTimeDate {
+    width: max-content;
+}
+
 #payout {
-    color: var(--secondaryTextColour);
+    color: var(--tertiaryTextColour);
+}
+
+
+/* Reward specific CSS */
+#cost {
+    color: var(--tertiaryTextColour);
 }

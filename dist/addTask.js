@@ -54,9 +54,10 @@ const AddTaskFromUI = () => {
     //get data from inputs
     const name = document.getElementById("name").value;
     if (name.replaceAll(" ", "") == "") {
-        alert("Cannot add a task with an empty name");
+        alert("Cannot add a task without a name!");
         return;
     }
+    /* TODO: Implement verification of dates, i.e. dates for next iteration must be greater than or equal to current date or task will never be assigned */
     const scheduleMode = document.getElementById("schedulingModeSelect").value;
     let scheduleData = "";
     let nextIteration = "";

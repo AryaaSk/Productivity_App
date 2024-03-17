@@ -79,7 +79,6 @@ const PopulateSetupTableview = (tasks: { task: Task, schedule: Schedule }[], rew
 
 const AddTask = () => {
     location.href = "/Src/Setup/AddTask/addTask.html";
-
     /*
     const GetTaskSetupData = () => {
         const name = prompt("Task Name")!;
@@ -123,6 +122,8 @@ const DeleteTask = (index: number) => {
 }
 
 const AddReward = () => {
+    location.href = "/Src/Setup/AddReward/addReward.html";
+    /*
     const GetRewardSetupData = () => {
         const name = prompt("Reward Name")!;
         const cost = Number(prompt("Cost: $"));
@@ -139,6 +140,7 @@ const AddReward = () => {
     SaveData(SETUP, SETUP_KEY);
 
     PopulateSetupTableview(SETUP.tasks, SETUP.rewards);
+    */
 }
 const DeleteReward = (index: number) => {
     SETUP.rewards.splice(index, 1);
