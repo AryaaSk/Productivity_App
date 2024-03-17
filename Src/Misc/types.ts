@@ -33,6 +33,7 @@ interface UserData {
     rewards: Reward[];
 
     lastScheduleUpdate: string; //mm/dd/yyyy; this prevents user from making changes to setup and seeing them applied on the same day
+    appVersion: number;
 }
 
 interface HistoryLog { //history of task completed, summary and payout

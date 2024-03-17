@@ -15,8 +15,3 @@ const GetData = (key) => {
     const json = localStorage.getItem(key);
     return json != null ? JSON.parse(json) : defaultData;
 };
-//Initialise global variables
-const SETUP = GetData(SETUP_KEY);
-const USER_DATA = GetData(USER_DATA_KEY); //load from local storage
-const HISTORY = GetData(HISTORY_KEY);
-const TODAY_DATE = new Date();

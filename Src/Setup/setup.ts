@@ -174,7 +174,7 @@ const ImportState = () => {
     location.reload();
 }
 const ExportState = () => {
-    location.href = "/Src/Migration/export.html"
+    location.href = "/Src/Misc/Migration/export.html"
 }
 
 
