@@ -20,7 +20,7 @@ const UpdateGoalPayoutValue = () => {
     const accomplishment = Number(document.getElementById("accomplishmentSlider").value);
     const time = Number(document.getElementById("timeSlider").value);
     const payoutLabel = document.getElementById("payout");
-    const payout = Math.round(Math.max(0, 527.777 * time - 277.777) + Math.max(0, 527.777 * accomplishment - 277.777));
+    const payout = GoalPayout(accomplishment, time);
     payoutLabel.innerText = `$${payout}`;
     return payout;
 };

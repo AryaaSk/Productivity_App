@@ -22,7 +22,7 @@ const UpdateCostValue = () => {
     const time = Number((<HTMLInputElement>document.getElementById("timeSlider")!).value);
     
     const costLabel = document.getElementById("cost")!;
-    const cost = Math.round(8.809*Math.exp(0.46*fun) + Math.max(30, 173.333*time - 108.333));
+    const cost = RewardPayout(fun, time);
     costLabel.innerText = `$${cost}`;
 
     return cost;

@@ -49,7 +49,7 @@ const UpdatePayoutValue = () => {
     const difficulty = Number(document.getElementById("benefitSlider").value);
     const time = Number(document.getElementById("timeSlider").value);
     const payoutLabel = document.getElementById("payout");
-    const payout = Math.round(8 * Math.exp(0.432 * benefit) + 5 * Math.exp(0.432 * difficulty) + 52 * time + 7);
+    const payout = TaskPayout(benefit, difficulty, time);
     payoutLabel.innerText = `$${payout}`;
     return payout;
 };

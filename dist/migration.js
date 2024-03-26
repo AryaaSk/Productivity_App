@@ -3,11 +3,11 @@
 //Asssume storage.js has already been loaded
 const APP_VERSION = 1.1;
 //Initialise global variables (with defaults if required)
+const TODAY_DATE = new Date();
 const DEFAULTS = {};
 DEFAULTS[SETUP_KEY] = { tasks: [], rewards: [], goals: [] };
 DEFAULTS[USER_DATA_KEY] = { balance: 0, tasks: [], rewards: [], goals: [], lastScheduleUpdate: FormatDate(new Date()), appVersion: APP_VERSION };
-DEFAULTS[HISTORY_KEY] = [];
-const TODAY_DATE = new Date();
+DEFAULTS[HISTORY_KEY] = [{ taskName: "", summary: "", payout: 0, date: AddDays(TODAY_DATE, -30) }]; //initialise with a history 30 days prior so progress view always has enough data
 const SETUP = GetData(SETUP_KEY);
 const USER_DATA = GetData(USER_DATA_KEY); //load from local storage
 const HISTORY = GetData(HISTORY_KEY);

@@ -1,0 +1,61 @@
+body {
+    height: 100vh;
+    width: 100vw;
+
+    --defaultCollectionViewCellSize: 80px; /* Want to fit 4/5 per row on most devices */
+    --maskGradient: linear-gradient(transparent 0%, black 15%, black 70%, transparent 100%);
+    --scaleGradient: linear-gradient(to right, grey, orange, red, rgb(11, 125, 233), navy, indigo, purple );
+}
+
+#mainWrapper {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 85% 15%;
+
+    height: 100%;
+    width: 100%;
+}
+
+#progressView {
+    height: 100%;
+    width: 100%;
+
+    padding-top: 10%;
+    padding-bottom: 10%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+
+    -webkit-mask-image: var(--maskGradient);
+    mask-image: var(--maskGradient);
+}
+#progressView > .section {
+    padding-bottom: 0;
+}
+#progressView > .section > .cell {
+    background-image: var(--scaleGradient);
+    background-size: 10000% 100%;
+    display: inline-block;
+}
+
+#scaleGrid {
+    height: 100%;
+    width: 100%;
+
+    display: grid;
+    place-items: center;
+
+}
+#scale {
+    height: 40px;
+    width: 90%;
+
+    background: var(--scaleGradient);
+    border-radius: 5px;
+}
+#scaleGrid > #earningRange {
+    margin: 0;
+    margin-top: -3px;
+
+    color: var(--secondaryTextColour);
+}
