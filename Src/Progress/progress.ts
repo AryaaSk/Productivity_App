@@ -1,4 +1,4 @@
-const MAX_EARNING_RANGE = 2000; //'maximum' credits earnable a day
+const MAX_EARNING_RANGE = 3000; //'maximum' credits earnable a day
 
 interface DayProfile {
     date: string;
@@ -55,7 +55,7 @@ const GenerateProgress = (history: HistoryLog[]) => {
 
 const UpdateEarningRange = () => {
     const earningRangeLabel = document.getElementById("earningRange")!;
-    earningRangeLabel.innerText = `0 → ${MAX_EARNING_RANGE}`;
+    earningRangeLabel.innerText = `$0 → $${MAX_EARNING_RANGE}+`;
 }
 const UpdateProgressView = (profiles: DayProfile[]) => {
     const section = document.getElementById("progress")!;
@@ -67,7 +67,8 @@ const UpdateProgressView = (profiles: DayProfile[]) => {
 
         //determine cell's colour as a percentage of the way along EARNING_RANGE, and then convert this percentage into a colour using css gradient
         //https://stackoverflow.com/questions/61124976/determine-color-based-on-percentage-gradient
-        const percentage = Math.max(day.creditsEarned / MAX_EARNING_RANGE * 100, 100); //use max as it's technically possible to go over max earning range
+        const percentage = Math.min((day.creditsEarned / MAX_EARNING_RANGE) * 100, 100); //use max as it's technically possible to go over max earning range
+        console.log(day, percentage)
         cell.style.backgroundPosition = `${percentage}% 0`;
 
         //when a cell is clicked, give a small report to user

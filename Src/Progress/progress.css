@@ -4,7 +4,7 @@ body {
 
     --defaultCollectionViewCellSize: 80px; /* Want to fit 4/5 per row on most devices */
     --maskGradient: linear-gradient(transparent 0%, black 15%, black 70%, transparent 100%);
-    --scaleGradient: linear-gradient(to right, grey, orange, red, rgb(11, 125, 233), navy, indigo, purple );
+    --scaleGradient: linear-gradient(to right, var(--systemHighlightBackgroundColour), orange, red, rgb(11, 125, 233), navy, indigo, purple );
 }
 
 #mainWrapper {
