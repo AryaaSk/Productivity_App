@@ -50,7 +50,7 @@ const UpdateProgressView = (profiles) => {
         cell.className = "cell";
         //determine cell's colour as a percentage of the way along EARNING_RANGE, and then convert this percentage into a colour using css gradient
         //https://stackoverflow.com/questions/61124976/determine-color-based-on-percentage-gradient
-        const percentage = day.creditsEarned / MAX_EARNING_RANGE * 100;
+        const percentage = Math.max(day.creditsEarned / MAX_EARNING_RANGE * 100, 100); //use max as it's technically possible to go over max earning range
         cell.style.backgroundPosition = `${percentage}% 0`;
         //when a cell is clicked, give a small report to user
         cell.onclick = () => { CellReport(day); };
