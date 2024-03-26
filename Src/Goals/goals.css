@@ -6,6 +6,8 @@
     height: 162px;
     width: 100%;
 
+    margin-bottom: 10px;
+
     display: grid;
     grid-template-columns: 60% 40%;
     place-items: center;

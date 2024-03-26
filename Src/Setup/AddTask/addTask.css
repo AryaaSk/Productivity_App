@@ -1,4 +1,4 @@
-/* Using this CSS file for both Add Task and Add Reward */
+/* Using this CSS file for Add Task, Add Reward and Add Goal */
 .rowElement {
     height: 100%;
     width: 100%;
@@ -28,9 +28,6 @@
     display: grid;
     grid-template-columns: 20% 70% 10%;
     place-items: center;
-}
-.goalSlider > .sliderRowWrapper {
-    grid-template-columns: 35% 55% 10%;
 }
 
 .sliderRowWrapper > div:first-child {
@@ -120,4 +117,9 @@
 /* Reward specific CSS */
 #cost {
     color: var(--tertiaryTextColour);
+}
+
+/* Goal specific CSS */
+.goalSlider > .sliderRowWrapper {
+    grid-template-columns: 40% 50% 10%;
 }

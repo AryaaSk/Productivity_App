@@ -70,6 +70,8 @@ const PopulateSetupTableview = (tasks: { task: Task, schedule: Schedule }[], rew
         const emptyText = document.createElement("p");
         emptyText.innerText = "No rewards yet...";
         tableview.append(emptyText);
+        tableview.append(document.createElement("br"));
+        tableview.append(document.createElement("br"));
     }
     else {
         tableview.append(rewardsSection);
@@ -220,10 +222,10 @@ const ImportState = () => {
     SaveData(data.userData, USER_DATA_KEY);
     SaveData(data.setup, SETUP_KEY);
     SaveData(data.history, HISTORY_KEY);
-    location.reload();
+    location.reload(); //data will be migrated after reload
 }
 const ExportState = () => {
-    location.href = "/Src/Misc/Migration/export.html"
+    location.href = "/Src/Misc/Migration/export.html";
 }
 
 

@@ -18,24 +18,27 @@ const HISTORY: HistoryLog[] = GetData(HISTORY_KEY);
 //Unlike an installed app, this PWA will always have the most recent version loaded; therefore there is no need to store the appVersion on the app locally, but rather we just need to store it as an attribute in the user's local storage
 //Will check for version and then apply changes, in ascending order so multiple updates can be applied sequentially
 
-if (USER_DATA.appVersion == undefined) {
-    //user data created before migration was implemented;
-
-    //Migration changes appVersion undefined -> 1:
-    //Added attribute appVersion to userData
-    USER_DATA.appVersion = 1;
-    console.log("Updated to app version 1");
+const RunMigration = () => {
+    if (USER_DATA.appVersion == undefined) {
+        //user data created before migration was implemented;
+    
+        //Migration changes appVersion undefined -> 1:
+        //Added attribute appVersion to userData
+        USER_DATA.appVersion = 1;
+        console.log("Updated to app version 1");
+    }
+    
+    if (USER_DATA.appVersion == 1) {
+        //Migration changes appversion 1 -> 1.1:
+        //Added goal attribute to setup and userData
+        SETUP.goals = [];
+        USER_DATA.goals = [];
+    
+        USER_DATA.appVersion = 1.1;
+        console.log("Updated to app version 1.1");
+    }
 }
-
-if (USER_DATA.appVersion == 1) {
-    //Migration changes appversion 1 -> 1.1:
-    //Added goal attribute to setup and userData
-    SETUP.goals = [];
-    USER_DATA.goals = [];
-
-    USER_DATA.appVersion = 1.1;
-    console.log("Updated to app version 1.1");
-}
+RunMigration();
 
 //Once all data is upto date, we can save the new data
 SaveData(USER_DATA, USER_DATA_KEY);
