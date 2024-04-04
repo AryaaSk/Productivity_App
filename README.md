@@ -16,7 +16,7 @@ For research and documentation of development, please read the [Research PDF](Re
 ### Tasks
 These are the tasks and habits which you need to get done everyday. There are different ways of scheduling a task, depending on whether it is periodic (needs to be every x days), on specific days of the week, or even a one-time task (e.g. complete an assignment).
 
-![Tasks](Previews/Task.png)
+![Tasks](Previews/Tasks.png)
 
 On completing a task you will be asked for a quick summary of what you did - this is a 'pseudo-verification' tactic to attempt to prevent you from breaking trust and thus making the app useless.
 
