@@ -22,7 +22,7 @@ On completing a task you will be asked for a quick summary of what you did - thi
 
 There is also a forfeit button if the task becomes overwehlming or unnecessary - this should rarely be used as tasks should have sufficient incentive based on their importance as their payout.
 
-Speaking of payouts, a task's payout is determined by 3 inputs: benefit, difficulty and time. The exact formula and its derivation is explained in the [Research PDF](ResearchPDF.pdf).
+Speaking of payouts, a task's payout is determined by 3 inputs: benefit, difficulty and time. The exact formula and its derivation is explained in the [Research PDF](Research.pdf).
 
 All scales are meant to be linear and exponential weightage is implicit within the payout function.
 
@@ -39,7 +39,7 @@ It is important you don't leave any potential source of enjoyment in your daily 
 
 The cost of rewards is explictly designed to generally be higher than that of a task's payout, as this ensures you are always spending more time completing tasks than doing rewards. Sounds grim at first, but eventually it lowers your baseline dopamine and hence improves your productivity in the long run.
 
-Speaking of costs, the reward cost function is similar to the tasks payout function, except there are now only two variables: fun/enjoyment and time. To learn about the cost function, read the [Research PDF](ResearchPDF.pdf).
+Speaking of costs, the reward cost function is similar to the tasks payout function, except there are now only two variables: fun/enjoyment and time. To learn about the cost function, read the [Research PDF](Research.pdf).
 
 ### Goals
 
