@@ -2,7 +2,7 @@
 
 ### An app which gamifies completing daily tasks and habits providing credits, which you can then use to buy rewards and hence improve productivity
 
-For research and documentation of development, please read the [Research PDF](ResearchPDF.pdf)
+For research and documentation of development, please read the [Research PDF](Research.pdf)
 
 ### URL: https://aryaask.github.io/Taskly/dist/
 *Taskly is built using vanilla HTML, JS and CSS and currently is distributed as a PWA through the [Native CSS](https://github.com/AryaaSk/Native) framework. If you wish to 'install' the app locally to your mobile device, open the website, click share and then add to homescreen (iOS); for Android there should be an install button around the search bar.*
